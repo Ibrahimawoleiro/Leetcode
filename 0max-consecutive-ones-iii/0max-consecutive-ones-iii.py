@@ -11,12 +11,10 @@ class Solution:
                 if(nums[right]==0):
                     zero_count+=1
                 current_max_window +=1
-                print(zero_count, current_max_window, right,nums[right], k)
                 right+=1
             else:
                 if nums[left] == 0:
                     zero_count-=1
-                    print(zero_count)
                 left+=1
                 current_max_window-=1
             
