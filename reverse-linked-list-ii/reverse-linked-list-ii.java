@@ -73,37 +73,6 @@ class Solution {
             left_node.next = current;
         }
         return head;
-        /*
-        if left > 1:
-            current = head
-            previous = None
-            next_node = None
-            position_count = 1
-            left_node = None
-            
-            while(position_count <= right):
-                if position_count == left - 1:
-                    left_holder = current
-                if(position_count >= left):
-                    if(position_count == right):
-                        current.next = previous
-                        previous = current
-                        current = next_node
-                        break
-                    if position_count == left:
-                        left_node = current
-                        next_node = current.next
-                    current.next = previous
-                    previous = current
-                    current = next_node
-                    next_node = current.next
-                    position_count+=1
-                    continue
-                current = current.next
-                position_count+=1
-            left_holder.next = previous
-            left_node.next = current
-        return head
-        */
+      
     }
 }
