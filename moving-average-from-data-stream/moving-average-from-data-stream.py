@@ -2,7 +2,6 @@ class MovingAverage:
 
     def __init__(self, size: int):
         self.count = 0
-        self.list = [None]
         self.queue = deque()
         self.size = size
 
@@ -14,7 +13,6 @@ class MovingAverage:
             for number in self.queue:
                 total+=number
             total/=self.count
-            self.list.append(total)
             return total
         else:
             if(len(self.queue) == self.size):
@@ -23,7 +21,6 @@ class MovingAverage:
             for number in self.queue:
                 total+=number
             total/=self.size
-            self.list.append(total)
             return total
         
                 
