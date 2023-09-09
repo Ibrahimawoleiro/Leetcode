@@ -6,15 +6,6 @@
 #         self.right = right
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
-        """
-        Cases: No children, 1 child, 2 chilren
-        
-        No children:
-        When a node has no chilren, return 1 + min(left node count, right node count)
-        
-        1 child: 
-        When a node has 1 child, only return the information from that child
-        """
         if root == None:
             return 0
         if root.right and root.left:
