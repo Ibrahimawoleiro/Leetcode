@@ -23,7 +23,6 @@ class Solution:
         minimum = min(curr.val, minimum)
         
         maximum_difference  = max(maximum_difference,maximum - minimum)
-        print(maximum_difference)
         
         return max(maximum_difference,self.helper(curr.left,maximum,minimum,maximum_difference),self.helper(curr.right,maximum,minimum,maximum_difference))
     
