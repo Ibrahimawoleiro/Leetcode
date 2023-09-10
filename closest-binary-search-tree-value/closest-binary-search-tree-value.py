@@ -7,19 +7,13 @@
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         """
-        //First of all, put the tree in a list using inorder traversal
-        //This will lead to a sorted list
-        //Then check marker, 
-            //if the marker is < than or equal to 0.5
-                //Loop through the list starting from the front and return the last number that is                          lower than target
-            //if the marker is > than 0.5
-                //loop through the list starting from the back and return the last number that is                           greater than target
-        
-        //
+        //Defined a list
+        //Use an in order traversal on the tree
+        //This gives an list that is sorted
+        //Now we calculate the lowest distance to find the number closest to target
         """
         List = []
         self.helper(root,List)
-        print(List)
         lowest_distance = 10 ** 5
         ans = 0
         for index in List:
@@ -27,7 +21,6 @@ class Solution:
                 lowest_distance = abs(index - target)
                 ans = index
             print(index, ans)
-        
         return ans
         
     def helper(self,root,List=[]):
