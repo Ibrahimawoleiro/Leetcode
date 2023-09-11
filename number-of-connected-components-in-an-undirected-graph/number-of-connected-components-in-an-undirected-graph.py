@@ -28,15 +28,12 @@ class Solution:
         stack = []
         seen = set()
         component_count = 0
-        #print(dict)
         for val in range(n):
             if val not in seen:
                 component_count+=1
                 stack.append(val)
                 while stack:
                     curr = stack.pop()
-                    print(curr)
-                    #print(seen)
                     seen.add(curr)
                     if curr in dict:
                         for connection in dict[curr]:
