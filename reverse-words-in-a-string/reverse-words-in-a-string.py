@@ -19,8 +19,6 @@ class Solution:
         
         real_holder = [curr for curr in holder if curr != ""]
         
-        print(real_holder)
-        
         real_holder.reverse()
         
         return " ".join(real_holder)
