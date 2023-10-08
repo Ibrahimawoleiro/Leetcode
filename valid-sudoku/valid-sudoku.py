@@ -23,7 +23,6 @@ class Solution:
                     if(num in range(3)):
                         if(number in range(3)):
                             if board[num][number] in checker1 and board[num][number]!=".":
-                                print("liar")
                                 return False
                             checker1.add(board[num][number])
                         elif number in range(3,6):
@@ -62,7 +61,6 @@ class Solution:
                             checker9.add(board[num][number])
                     checker.add(board[num][number])  
             checker = set()
-        print(checker3)
         
         
         for num in list(range(9)):
@@ -75,8 +73,6 @@ class Solution:
                     
                     checker.add(board[number][num]) 
             checker = set()
-            
-        print(checker8)
             
         
         
