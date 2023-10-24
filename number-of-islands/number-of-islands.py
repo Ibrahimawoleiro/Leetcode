@@ -8,7 +8,7 @@ class Solution:
         for array_index in range(len(grid)):
             for number_index in range(len(grid[array_index])):
                 if grid[array_index][number_index] == "1":
-                    print("opkjkl")
+                
                     island_count +=1
                     grid[array_index][number_index] = "5"
                     if array_index-1>=0 and grid[array_index-1][number_index]=="1":
@@ -21,9 +21,9 @@ class Solution:
                         Queue.append([array_index,number_index+1])
              
                     while Queue:
-                        print(Queue,"hjknlm")
+                   
                         curr = Queue.popleft()
-                        print(Queue)
+                     
                         grid[curr[0]][curr[1]]="5"
                         if curr[0] - 1 >= 0 and grid[curr[0]-1][curr[1]]=="1":
                             Queue.append([curr[0]-1,curr[1]])
