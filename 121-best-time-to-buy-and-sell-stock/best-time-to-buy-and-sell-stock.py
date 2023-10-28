@@ -8,9 +8,10 @@ class Solution:
         right = 1
 
         while(right < len(prices)):
-            if (prices[left] < prices[right]) and (prices[right] - prices[left]) > curr_max:
-                curr_max = prices[right] - prices[left]
-            elif(prices[right] < prices[left]) :
+            if (prices[left] < prices[right]):
+                if  (prices[right] - prices[left]) > curr_max:
+                    curr_max = prices[right] - prices[left]
+            else:
                 left = right
             
             right+=1
