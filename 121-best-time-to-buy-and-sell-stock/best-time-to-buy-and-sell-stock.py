@@ -1,7 +1,6 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if len(prices) == 0 or len(prices) ==1:
-            return 0
+        
         curr_max = 0
 
         left = 0
