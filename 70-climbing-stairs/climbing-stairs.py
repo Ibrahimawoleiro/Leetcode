@@ -1,26 +1,28 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if(n==1):
+        if n==0:
             return 1
 
-        dictionary = {
-            0:1,
-            1:1
+        ways = 0
+
+        dictionary={
+            n:1,
+            n-1:1
         }
+     
+        return  self.helper(dictionary,0,ways,n,n-1)
+     
+    def helper(self, dictionary,beginning,ways,max,second_max):
+        if beginning == max or beginning == second_max:
+            return 1
+        elif beginning in dictionary:
+            return dictionary[beginning]
+        if(beginning+1 <= max):
+            ways += self.helper(dictionary,beginning+1,ways,max,second_max)
+        
+        if(beginning + 2 <= max):
+            ways += self.helper(dictionary,beginning+2,ways,max,second_max)
 
-        left = self.helper(dictionary,n-1)
-        right = self.helper(dictionary,n-2)
-
-        return left + right
-
-    def helper(self, dictionary,n):
-        if n in dictionary:
-            return dictionary[n]
-
-        left = self.helper(dictionary,n-1)
-        right = self.helper(dictionary,n-2)
-
-        dictionary[n]=left+right
-
-
-        return left + right
+        if beginning not in dictionary:
+            dictionary[beginning]= ways
+        return ways
