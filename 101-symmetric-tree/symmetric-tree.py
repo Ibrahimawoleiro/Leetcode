@@ -15,8 +15,6 @@ class Solution:
 
         self.righthelper(root.right,rightarr,"root")
         self.lefthelper(root.left,leftarr,"root")
-        print(leftarr)
-        print(rightarr)
         return leftarr == rightarr
     def righthelper(self,root,arr,direction):
         
