@@ -18,32 +18,38 @@ class Solution:
                                The left is less than the 0: We skip in this case
                                The right is greater than n: We skip in this case
         """
+        max_island = 0
+        direction = []
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if grid[row][col] == 1:
+                    direction.append([row,col])
+                    grid[row][col]=5
+                    count = 0
         
-        island_count = 0
-        max_island_count = 0
-        for num in range(len(grid)):
-            for val in range(len(grid[0])):
-                island_count = 0
-                if grid[num][val] == 1:
-                    stack = []
-                    stack.append([num,val])
-                    while stack:
-                        curr = stack.pop()
-                        if grid[curr[0]][curr[1]] == 1:
-                            island_count+=1
-                            grid[curr[0]][curr[1]] = 5
-                            if curr[0] - 1 >= 0:
-                                if grid[curr[0]-1][curr[1]] == 1:
-                                    stack.append([curr[0]-1,curr[1]])
-                            if curr[1] - 1 >= 0:
-                                if grid[curr[0]][curr[1]-1] == 1:
-                                    stack.append([curr[0],curr[1]-1])
-                            if curr[0] + 1 < len(grid):
-                                if grid[curr[0]+1][curr[1]] == 1:
-                                    stack.append([curr[0]+1,curr[1]])
-                            if curr[1] + 1 < len(grid[0]):
-                                if grid[curr[0]][curr[1]+1] == 1:
-                                    stack.append([curr[0],curr[1]+1])
-                        if island_count > max_island_count:
-                            max_island_count = island_count
-        return max_island_count
+                    while(direction):
+                        curr = direction.pop()
+                        count +=1
+                        
+                        if count > max_island:
+                            max_island = count
+                        
+                        if curr[0]-1>=0:
+                            if grid[curr[0]-1][curr[1]] == 1:
+                                direction.append([curr[0]-1,curr[1]])
+                                grid[curr[0]-1][curr[1]]=5
+                        if curr[0]+1<len(grid):
+                            if grid[curr[0]+1][curr[1]] == 1:
+                                direction.append([curr[0]+1,curr[1]])
+                                grid[curr[0]+1][curr[1]]=5
+                        if curr[1]-1>=0:
+                            if grid[curr[0]][curr[1]-1] == 1:
+                                direction.append([curr[0],curr[1]-1])
+                                grid[curr[0]][curr[1]-1]=5
+
+                        if curr[1]+1<len(grid[0]):
+                            if grid[curr[0]][curr[1]+1] == 1:
+                                direction.append([curr[0],curr[1]+1])
+                                grid[curr[0]][curr[1]+1]=5
+
+        return max_island
