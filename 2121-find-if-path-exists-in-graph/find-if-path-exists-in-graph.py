@@ -1,44 +1,29 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        dictionary={}
+        dict = {}
         for connection in edges:
-            print(connection)
-            if connection[0] not in dictionary:
-                if connection[1] not in dictionary:
-                        dictionary[connection[1]]=[connection[0]]
-                        dictionary[connection[0]]=[connection[1]]
-                elif connection[1] in dictionary:
-                    dictionary[connection[0]]=[connection[1]]
-                    dictionary[connection[1]].append(connection[0])
-            elif connection[1] not in dictionary:
-                if connection[0] not in dictionary:
-                    dictionary[connection[1]]=[connection[0]]
-                    dictionary[connection[0]]=[connection[1]]
-                elif connection[0] in dictionary:
-                    dictionary[connection[1]]=[connection[0]]
-                    dictionary[connection[0]].append(connection[1])
-            elif connection[0] in dictionary and connection[1] in dictionary:
-                dictionary[connection[1]].append(connection[0])
-                dictionary[connection[0]].append(connection[1])
-
-        seen = set()
-        isVisited = set()
-        direction = []
-
-        direction.append(source)
-        while(direction):
-            print(direction)
-            curr = direction.pop()
+            if connection[0] not in dict:
+                dict[connection[0]] = [connection[1]]
+            else:
+                dict[connection[0]].append(connection[1])
+            if connection[1] not in dict:
+                dict[connection[1]] = [connection[0]]
+            else:
+                dict[connection[1]].append(connection[0])
             
-            print(curr)
-            if curr == destination:
+        seen = set()
+        stack = []
+        stack.append(source)
+        while stack:
+            curr = stack.pop()
+            if curr in dict:
+                for connection in dict[curr]:
+                    if connection not in seen:
+                        stack.append(connection)
+            seen.add(curr)
+            
+            if(curr == destination):
                 return True
-            if curr not in isVisited:
-                isVisited.add(curr)
-                for neighbor in dictionary[curr]:
-                    if neighbor not in seen:
-                        direction.append(neighbor)
-                        seen.add(neighbor)
         
-
         return False
+            
