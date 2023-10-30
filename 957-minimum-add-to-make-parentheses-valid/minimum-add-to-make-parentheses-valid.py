@@ -5,7 +5,7 @@ class Solution:
         for input in s:
             if input == "(":
                 checker.append(input)
-            elif input == ")" and len(checker) > 0 and checker[len(checker)-1] == "(":
+            elif input == ")" and checker and checker[len(checker)-1] == "(":
                 checker.pop()
 
             else:
