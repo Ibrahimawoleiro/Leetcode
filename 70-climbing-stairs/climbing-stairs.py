@@ -1,6 +1,6 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        # Approach 1
+        # #Approach 1
         # if n==1:
         #     return 1
         # if n==2:
@@ -20,18 +20,40 @@ class Solution:
         #     arr[num] = arr[num-1] + arr[num-2]
         # return arr[n-1]
 
+
+        # #Approach2
+        # if n==1:
+        #     return 1
+        # if n==2:
+        #     return 2
+        # dictionary = {}
+
+        # for val in range(n):
+        #     if val == 0 or val == 1:
+        #         dictionary[val+1] = val + 1
+        #     else:
+        #         dictionary[val+1] = dictionary[val] + dictionary[val - 1]
+        
+        # return dictionary[n]
+
+
+        # Approach3
         if n==1:
             return 1
         if n==2:
             return 2
-        dictionary = {}
+
+        x = 1
+        y = 2
 
         for val in range(n):
-            if val == 0 or val == 1:
-                dictionary[val+1] = val + 1
-            else:
-                dictionary[val+1] = dictionary[val] + dictionary[val - 1]
-        
-        return dictionary[n]
+            if val == 0 or val == 1: 
+                continue
+            temp = x + y
+            x = y
+            y = temp
+
+        return y
+
 
         
