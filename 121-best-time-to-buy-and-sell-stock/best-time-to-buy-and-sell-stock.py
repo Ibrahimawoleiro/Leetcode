@@ -2,7 +2,6 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
         curr_max = 0
-
         left = 0
         right = 1
 
