@@ -21,25 +21,77 @@ class Solution:
         
         # return True
 
-        #Approach2
+        # #Approach2
+        # slow = head
+        # fast = head
+        # arr=[]
+        # while(fast != None and fast.next != None):
+        #     arr.append(slow.val)
+        #     slow = slow.next
+        #     fast = fast.next.next
+        # if fast == None:
+        #     while(slow != None):
+        #         if(slow.val != arr.pop()):
+        #             return False
+        #         slow = slow.next
+        # elif fast.next == None:
+        #     slow = slow.next
+        #     while(slow != None):
+        #         if(slow.val != arr.pop()):
+        #             return False
+        #         slow = slow.next
+        # return True
+
+        #Approach3
+        if(head.next == None):
+            return True
+
         slow = head
         fast = head
-        arr=[]
+        previous = None
         while(fast != None and fast.next != None):
-            arr.append(slow.val)
+            previous = slow
             slow = slow.next
             fast = fast.next.next
+        
         if fast == None:
-            while(slow != None):
-                if(slow.val != arr.pop()):
+            previous.next = None
+            previous = None
+            curr = slow
+            next = None
+            while(curr != None):
+                next = curr.next
+                curr.next = previous
+                previous = curr
+                curr = next
+
+            checker = head
+            while(previous != None):
+                if previous.val != checker.val:
                     return False
-                slow = slow.next
+                previous = previous.next
+                checker = checker.next
+        
         elif fast.next == None:
             slow = slow.next
-            while(slow != None):
-                if(slow.val != arr.pop()):
+            previous.next = None
+            previous = None
+            curr = slow
+            next = None
+            while(curr != None):
+                next = curr.next
+                curr.next = previous
+                previous = curr
+                curr = next
+
+            checker = head
+            while(previous != None):
+                if previous.val != checker.val:
                     return False
-                slow = slow.next
+                previous = previous.next
+                checker = checker.next
+        
         return True
+
             
             
