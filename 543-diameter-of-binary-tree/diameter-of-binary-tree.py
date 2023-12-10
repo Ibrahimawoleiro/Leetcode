@@ -46,10 +46,8 @@ class Solution:
             return r
         else:
             l[0]+=1
-            print(l)
             if l[0] > l[1]:
                 l[1] = l[0]
-                print(l)
             return l
         
         
