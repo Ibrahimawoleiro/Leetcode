@@ -5,6 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    #Approach1
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
 
         if root == None:
@@ -34,9 +35,7 @@ class Solution:
             return False
         
         if root.val == subRoot.val:
-            l = self.helper(root.left if root else None, subRoot.left if subRoot else None)
-            r = self.helper(root.right if root else None, subRoot.right if subRoot else None)
-            return l and r
+            return self.helper(root.left if root else None, subRoot.left if subRoot else None) and self.helper(root.right if root else None, subRoot.right if subRoot else None)
         else:
             return False
 
