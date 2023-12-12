@@ -15,7 +15,6 @@ class Solution:
         if not root.left and not root.right:
             current_path.append(str(root.val))
             result.append('->'.join(current_path))
-        print(current_path, root.val)
         if root.left:
             self.helper(root.left, result, current_path.copy()+[str(root.val)])
         if root.right:
