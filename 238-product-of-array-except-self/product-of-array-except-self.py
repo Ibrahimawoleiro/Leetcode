@@ -1,14 +1,37 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        
-        prefix = [1 for val in nums]
+        # #Appraoch1->Time limit Exceeded
+        # result = [0 for val in range(len(nums))]
 
-        postfix = [1 for val in nums]
+        # for index in range(len(nums)):
+        #     curr = 1
+        #     for val in range(len(nums)):
+        #         if val == index:
+        #             continue
+        #         curr *= nums[val]
 
-        for index in range(1,len(nums)):
-            prefix[index] = prefix[index-1] * nums[index - 1]
+        #     result[index] = curr
+            
+        # return result
 
-        for index in reversed(range(len(nums)-1)):
-            postfix[index] = postfix[index+1] * nums[index + 1]
+        #Approach2
+        prefix = [1 for val in range(len(nums))]
+        postfix = [1 for val in range(len(nums))]
 
-        return [ prefix[index] * postfix[index] for index in range(len(nums))]
+        for index in range(len(nums)):
+            if index == 0:
+                continue
+            prefix[index] = prefix[index - 1] * nums[index - 1]
+
+        for index in reversed(range(len(nums))):
+            if index == len(nums) - 1:
+                continue
+            postfix[index] = postfix[index + 1] * nums[index + 1]
+
+        for val in range(len(postfix)):
+            postfix[val] = postfix[val] * prefix[val]
+
+        return postfix
+
+
+
