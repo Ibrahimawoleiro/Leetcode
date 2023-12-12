@@ -9,9 +9,28 @@ class Solution:
         #     checker.add(val) 
 
 
-        #Appraoch2
-        for val in range(len(nums)):
-            if nums[abs(nums[val])] < 0:
-               return abs(nums[val])
-            nums[abs(nums[val])] *= -1
+        # #Appraoch2
+        # for val in range(len(nums)):
+        #     if nums[abs(nums[val])] < 0:
+        #        return abs(nums[val])
+        #     nums[abs(nums[val])] *= -1
         
+        #Approach3
+        slow = nums[0]
+        fast = nums[0]
+        fast = nums[nums[fast]]
+        slow = nums[slow]
+        while(fast != slow):
+            fast = nums[nums[fast]]
+            slow = nums[slow]
+        
+        slow = nums[0]
+
+        while(fast != slow):
+            fast = nums[fast]
+            slow = nums[slow]
+        
+        return fast
+
+
+
