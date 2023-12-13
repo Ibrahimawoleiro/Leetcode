@@ -7,7 +7,6 @@ class Solution:
                 if board[row_index][col_index] == word[0]:
                     seen = set()
                     i = 1
-                    print(seen)
                     if self.helper([row_index,col_index, i], seen,board,word):
                         return True
         return False
