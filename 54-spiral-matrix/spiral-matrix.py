@@ -28,7 +28,6 @@ class Solution:
             if i<l:
                 break
             while(i>= l):
-                print(i,l)
                 arr.append(matrix[j][i])
                 if i==l:
                     break
