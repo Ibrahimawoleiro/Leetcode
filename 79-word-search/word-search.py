@@ -1,7 +1,6 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         
-        
         for row_index in range(len(board)):
             for col_index in range(len(board[0])):
                 if board[row_index][col_index] == word[0]:
