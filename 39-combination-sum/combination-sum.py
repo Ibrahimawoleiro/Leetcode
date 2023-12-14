@@ -13,7 +13,6 @@ class Solution:
                 seen.add(temp)
                 main.append(curr.copy())
             return
-        print(curr)
         for val in checker:
             curr.append(val)
             total += val
