@@ -12,15 +12,10 @@ class Solution:
         if index >= len(nums):
             return 
         curr.append(nums[index])
-        print(curr)
         seen.add(tuple(curr))
         if index <= len(nums) - 1:
             for k in range((len(nums) - 1) - index):
                 self.helper(index+k+1, seen, nums, curr)
-                print(k,'now')
-                print(curr)
-                curr.pop()
-                print(curr,'after')
-                
+                curr.pop()        
         else:
             curr.pop()
