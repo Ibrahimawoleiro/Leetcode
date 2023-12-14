@@ -3,7 +3,6 @@ class Solution:
         seen = set()
         seen.add(())
         for index in range(len(nums)):
-            print(index,'jjjj')
             self.helper(index, seen, nums, [])
 
         return list(seen)
