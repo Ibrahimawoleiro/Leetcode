@@ -16,21 +16,14 @@ class Solution:
 
                 temp = helper(val)
                 max_sum += temp
-                print(temp, index, max_sum)
                 if index not in dictionary or max_sum > dictionary[index]:
-                    print('lion',max_sum)
-                    print(temp, index, max_sum)
                     dictionary[index] = max_sum
-                    print(dictionary[index],'fhjknhbh')
                 max_sum -= temp
             
             return dictionary[index]
 
         for val in range(0, len(nums)):
             helper(val)
-
-        print(dictionary)
-
         if 0 in dictionary and 1 in dictionary:
             if dictionary[0] > dictionary[1]:
                 return dictionary[0]
