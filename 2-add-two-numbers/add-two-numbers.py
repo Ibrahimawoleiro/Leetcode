@@ -21,7 +21,6 @@ class Solution:
                     else:
                         iterator.next = ListNode(addition % 10)
                         iterator = iterator.next
-                        print(int(floor(addition / 10)))
                         checker = int(floor(addition / 10))
                         if checker:
                             extra = checker
@@ -32,7 +31,6 @@ class Solution:
                     iterator.next = ListNode(addition % 10)
                     iterator = iterator.next
                     checker = int(floor(addition / 10))
-                    print(checker,'ghjk')
                     if checker:
                         extra = checker
                     else:
@@ -47,7 +45,6 @@ class Solution:
                         iterator.next = ListNode(addition % 10)
                         iterator = iterator.next
                         checker = int(floor(addition / 10))
-                        print(checker)
                         if checker:
                             extra = checker
                         else:
@@ -55,7 +52,6 @@ class Solution:
                     else:
                         iterator.next = ListNode(addition % 10)
                         iterator = iterator.next
-                        print(int(floor(addition / 10)))
                         checker = int(floor(addition / 10))
                         if checker:
                             extra = checker
@@ -63,7 +59,6 @@ class Solution:
                             extra = 0
                 else:
                         addition = l1.val 
-                        print(addition,'dfghjhgfd')
                         iterator.next = ListNode(addition % 10)
                         iterator = iterator.next
                         checker = int(floor(addition / 10))
@@ -87,7 +82,6 @@ class Solution:
                     else:
                         iterator.next = ListNode(addition % 10)
                         iterator = iterator.next
-                        print(int(floor(addition / 10)))
                         checker = int(floor(addition / 10))
                         if checker:
                             extra = checker
