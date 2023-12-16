@@ -11,9 +11,7 @@ class Solution:
                     return dictionary[index]
             
             max_sum = nums[index]
-
             for val in range(index + 2, len(nums)):
-
                 temp = helper(val)
                 max_sum += temp
                 if index not in dictionary or max_sum > dictionary[index]:
@@ -21,7 +19,7 @@ class Solution:
                 max_sum -= temp
             
             return dictionary[index]
-
+            
         for val in range(0, len(nums)):
             helper(val)
         if 0 in dictionary and 1 in dictionary:
