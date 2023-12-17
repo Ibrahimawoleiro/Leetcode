@@ -32,9 +32,7 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = next_holder
-
-        print(slow)
-        #print(prev, slow)
+            
         slow = head
         temp1 = None
         temp2 = None
