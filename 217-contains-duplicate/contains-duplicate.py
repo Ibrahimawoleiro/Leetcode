@@ -13,7 +13,6 @@ class Solution:
         #Approach 2
 
         nums.sort()
-        print(nums)
         for index in range(len(nums)):
             if index == 0:
                 continue
