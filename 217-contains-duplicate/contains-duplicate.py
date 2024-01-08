@@ -1,33 +1,23 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        # #Approach1
-        # if len(nums) == 1:
-        #     return False
-        # #Create a left and right pointer
-        # left = 0
-        # right = 1
-
-        # #Sort the array
-        # nums.sort()
-        # #Loop through the sorted array while checking current to the last seen 
-        # #if equal, return false 
-        # #if no false was return, return true
-        # while(right < len(nums)):
-        #     if(nums[left] == nums[right]):
-        #         return True
-        #     left+=1
-        #     right+=1
+        # #Approach 1
+        # for index in range(len(nums)):
+        #     for checker_index in range(len(nums)):
+        #         if(index == checker_index):
+        #             continue
+        #         if nums[index] == nums[checker_index]:
+        #             return True
+            
         # return False
-        #Runtime: O(n lg n) 
-        #Space:O(1)
 
-        #Approach2
+        #Approach 2
 
-        #create a dictionary:
-        checker = set()
-        for num in nums:
-            if num not in checker:
-                checker.add(num)
-            else:
+        nums.sort()
+        print(nums)
+        for index in range(len(nums)):
+            if index == 0:
+                continue
+            if nums[index] == nums[index - 1]:
                 return True
+        
         return False
