@@ -10,13 +10,23 @@ class Solution:
             
         # return False
 
-        #Approach 2
+        # #Approach 2
 
-        nums.sort()
-        for index in range(len(nums)):
-            if index == 0:
-                continue
-            if nums[index] == nums[index - 1]:
-                return True
+        # nums.sort()
+        # for index in range(len(nums)):
+        #     if index == 0:
+        #         continue
+        #     if nums[index] == nums[index - 1]:
+        #         return True
         
+        # return False
+
+        #Approach 3
+        checker = set()
+
+        for number in nums:
+            if number not in checker:
+                checker.add(number)
+            else:
+                return True
         return False
