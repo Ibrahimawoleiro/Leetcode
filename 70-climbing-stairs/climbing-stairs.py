@@ -14,18 +14,32 @@ class Solution:
         # return dictionary[n] if n in dictionary else 0
 
 
-        #Approach 2
-        arr = [0 for val in range(n+1)]
-        arr[0] = 1
-        arr[1] = 1
+        # #Approach 2
+        # arr = [0 for val in range(n+1)]
+        # arr[0] = 1
+        # arr[1] = 1
 
+        # for val in range(n+1):
+        #     if val == 0 or val == 1:
+        #         continue
+            
+        #     arr[val] = arr[val - 1] + arr[val - 2]
+
+        # return arr[n]
+
+        #Approach 3
+        current = 1
+        previous = 1
+        
         for val in range(n+1):
             if val == 0 or val == 1:
                 continue
             
-            arr[val] = arr[val - 1] + arr[val - 2]
+            temp = current
+            current = previous + current
+            previous = temp
 
-        return arr[n]
+        return current
 
 
         
