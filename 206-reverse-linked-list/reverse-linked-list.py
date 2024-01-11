@@ -5,28 +5,16 @@
 #         self.next = next
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # #Approach1
-        # if head == None:
-        #     return None
-        # previous = None
-        # current = head
-        # next = head.next
-        # while(current != None):
-        #     next = current.next
-        #     current.next = previous
-        #     previous = current
-        #     current = next
-        # return previous
+        #Approach1
+        curr = head
+        stack = []
+        while(curr != None):
+            stack.append(curr.val)
+            curr = curr.next
+        ans = ListNode()
+        result = ans
+        while(stack):
+            ans.next = ListNode(val = stack.pop(), next = None)
+            ans = ans.next
         
-        #Approach2
-        return self.helper(head, None)
-
-
-    def helper(self, current, previous):
-        if current == None:
-            return previous
-        next = current.next
-        current.next = previous
-        previous = current
-        current = next
-        return self.helper(current,previous)
+        return result.next
