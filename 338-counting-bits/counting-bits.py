@@ -1,32 +1,17 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        # #Approach1
-        # arr = [0 for num in range(n+1)]
-
-        # for val in range(len(arr)):
-           
-        #     temp = val
-        #     one_count = 0
-        #     while(temp > 0):
-        #         if(temp % 2 ==1):
-        #             one_count+=1
-        #         temp= int(temp/2)
-            
-        #     arr[val] = one_count
-
-        # return arr
-
-        #Approach2
-        arr = [0 for num in range(n+1)]
-        time_to_change = 2
-        checker = 0
-        for val in range(n+1):
-            if val == 0 or val == 1:
-                arr[val] = val
+        arr = [0 for val in range(n+1)]
+        power = -1
+        target = 0
+        for index in range(len(arr)):
+            if index == 0:
                 continue
-            if val == time_to_change:
-                time_to_change*=2
-                checker+=1 
-            arr[val] = 1 + arr[val - 2**checker]
+            if index == 2 ** target:
+                power+=1
+                target+=1
+            arr[index] = arr[index - 2 ** power] + 1
+            
+             
         
         return arr
+            
