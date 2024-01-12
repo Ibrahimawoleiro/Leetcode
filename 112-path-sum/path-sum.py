@@ -7,7 +7,7 @@
 class Solution:
     #Approach1
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        
+        #Approach 1
         def helper(root,sum_so_far):
             if not root:
                 return False
