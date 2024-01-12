@@ -7,22 +7,26 @@
 class Solution:
     #Approach1
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        return self.helper(root, targetSum)
         
-    def helper(self, root, targetSum):
-        if root == None:
-            return False
-        if not root.left and not root.right:
-            return targetSum - root.val == 0
-        sub = targetSum - root.val
-        
-        l = False
-        r = False
+        def helper(root,sum_so_far):
+            if not root:
+                return False
+            sum_so_far += root.val
+            if not root.left and not root.right and sum_so_far == targetSum:
+                return True
+            
+            if root.left:
+               l =  helper(root.left,sum_so_far)
+               print('lk')
+               if l:
+                   return l
+            if root.right:
+                r = helper(root.right,sum_so_far)
+                print('lnk')
+                if r:
+                    return r
 
-        if root.right:
-            l = self.helper(root.right, sub)
-        if root.left:
-            r = self.helper(root.left,sub)
-        
-        return l or r
+            return False
+
+        return helper(root,0)
         
