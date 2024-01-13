@@ -1,20 +1,15 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        arr_s = []
-        arr_t = []
+        # #Approach1
+        arr1 = []
+        arr2 = []
+        def helper(string, array):
+            for val in string:
+                if val == "#" and len(array) > 0:
+                    array.pop()
+                elif val != '#':
+                    array.append(val)
+            return array
 
-        for val in s:
-            if val !='#':
-                arr_s.append(val)
-            else:
-                if len(arr_s) != 0:
-                    arr_s.pop()
-        
-        for val in t:
-            if val !='#':
-                arr_t.append(val)
-            else:
-                if len(arr_t) != 0:
-                    arr_t.pop()
-
-        return arr_s == arr_t
+        return helper(s,arr1) == helper(t,arr2)
+                
