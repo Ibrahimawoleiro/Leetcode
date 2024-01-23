@@ -9,8 +9,9 @@ class Solution:
             index += 1
             while(index < len(nums)):
                 helper(checker,index)
+                checker.pop()
                 index += 1
-            checker.pop()
+            
             
         for index in range(len(nums)):
             helper([],index)
