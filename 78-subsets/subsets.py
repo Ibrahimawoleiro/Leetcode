@@ -1,20 +1,18 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        seen = set()
-        seen.add(())
+        arr = [[]]
+        def helper(checker,index):
+            if index > len(nums) - 1:
+                return
+            checker.append(nums[index])
+            arr.append(checker.copy())
+            index += 1
+            while(index < len(nums)):
+                helper(checker,index)
+                index += 1
+            checker.pop()
+            
         for index in range(len(nums)):
-            self.helper(index, seen, nums, [])
+            helper([],index)
 
-        return list(seen)
-        
-    def helper(self, index, seen, nums, curr):
-        if index >= len(nums):
-            return 
-        curr.append(nums[index])
-        seen.add(tuple(curr))
-        if index <= len(nums) - 1:
-            for k in range((len(nums) - 1) - index):
-                self.helper(index+k+1, seen, nums, curr)
-                curr.pop()        
-        else:
-            curr.pop()
+        return arr
