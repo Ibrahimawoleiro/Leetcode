@@ -1,27 +1,22 @@
 class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
         seen = set()
-        self.helper(s,0,seen)
-        return list(seen)
+        def helper(word,index):
+            if index > len(s) - 1:
+                return
+            curr = word.copy()
+            if word[index].isalpha():
+                print(word[index])
+                lower = curr[index].lower()
+                up = curr[index].upper()
+                curr[index] = lower
+                seen.add("".join(curr))
+                helper(list(curr), index + 1)
+                curr[index] = up
+                seen.add("".join(curr))
+                helper(list(curr), index + 1)
+            else:
+                helper(word, index + 1)
+        helper(list(s),0)
 
-    def helper(self,curr,index,seen):
-        if index >= len(curr):
-            return 
-        print(curr, index, curr)
-        seen.add(curr)
-
-        if curr[index].isalpha() and curr[index].isupper() :
-
-            temp = list(curr)
-            temp[index] = temp[index].lower()
-            if "".join(temp) not in seen:
-
-                self.helper("".join(temp), index, seen) 
-
-        elif curr[index].isalpha() and curr[index].islower():
-            temp = list(curr)
-            temp[index] = temp[index].upper()
-            if "".join(temp) not in seen:
-                self.helper("".join(temp), index, seen) 
-        
-        self.helper(curr, index+1, seen) 
+        return list(seen) if seen else  [s]
