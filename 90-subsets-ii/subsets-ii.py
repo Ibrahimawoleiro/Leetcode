@@ -1,22 +1,21 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        #Approach1
+        #Approach 1
         nums.sort()
-        seen = set()
-        seen.add(())
+        arr = set([()])
+        def helper(checker,index):
+            if index > len(nums) - 1:
+                return
+            checker.append(nums[index])
+            arr.add(tuple(checker.copy()))
+            index += 1
+            while(index < len(nums)):
+                helper(checker,index)
+                checker.pop()
+                index += 1
+            
+            
         for index in range(len(nums)):
-            self.helper(index, seen, nums, [])
+            helper([],index)
 
-        return list(seen)
-        
-    def helper(self, index, seen, nums, curr):
-        if index >= len(nums):
-            return 
-        curr.append(nums[index])
-        seen.add(tuple(curr))
-        if index <= len(nums) - 1:
-            for k in range((len(nums) - 1) - index):
-                self.helper(index+k+1, seen, nums, curr)
-                curr.pop()        
-        else:
-            curr.pop()
+        return list(arr)
