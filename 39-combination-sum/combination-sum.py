@@ -5,7 +5,6 @@ class Solution:
         def helper(combination,total):
             if total >= target:
                 if total == target:
-                    print(combination)
                     ans.add(tuple(sorted(combination.copy())))       
                 return
 
