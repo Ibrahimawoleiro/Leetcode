@@ -1,21 +1,30 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        result = []
-        marker = []
-        self.helper(marker, result, nums)
-        return result
-    
-    def helper(self,marker, result, curr_arr):
-        if not curr_arr:
-            result.append(marker.copy())
-            return
+    #I need an empty array to store the overall output
+    #I need an empty array to store the current permutation i am making
 
-        for val in range(len(curr_arr)):
-            current = curr_arr[0]
-            marker.append(current)
-            copy = curr_arr[1:len(curr_arr)]
-            print(copy)
-            self.helper(marker, result, copy)
-            marker.pop()
-            temp = curr_arr.pop(0)
-            curr_arr.append(temp)
+        array = []
+
+        def helper(arr,permutation):
+            if len(permutation) == len(nums):
+                print(permutation,"ghbjkl")
+                array.append(permutation.copy())
+                return
+            print('permutaion',len(permutation), 'nums', len(nums))
+            for index in range(len(arr)):
+                print(arr,"arr")
+                permutation.append(arr.pop(0))
+                print(permutation,"permutation")
+                helper(arr,permutation)
+                arr.append(permutation.pop())
+
+        helper(nums.copy(),[])
+
+        return array
+            
+
+
+
+
+
+        
