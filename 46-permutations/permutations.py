@@ -7,17 +7,12 @@ class Solution:
 
         def helper(arr,permutation):
             if len(permutation) == len(nums):
-                print(permutation,"ghbjkl")
                 array.append(permutation.copy())
                 return
-            print('permutaion',len(permutation), 'nums', len(nums))
             for index in range(len(arr)):
-                print(arr,"arr")
-                permutation.append(arr.pop(0))
-                print(permutation,"permutation")
+                permutation.append(arr.pop(0)) 
                 helper(arr,permutation)
                 arr.append(permutation.pop())
-
         helper(nums.copy(),[])
 
         return array
