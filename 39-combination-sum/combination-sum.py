@@ -1,21 +1,22 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        result = []
-        curr = []
-        seen = set()
-        self.helper(target, candidates, result, curr, 0, seen)
-        return result
+        ans = set()
 
-    def helper(self, target, checker, main, curr, total, seen):
-        if total >= target:
-            temp = tuple(sorted(curr))
-            if total == target and  temp not in seen:
-                seen.add(temp)
-                main.append(curr.copy())
-            return
-        for val in checker:
-            curr.append(val)
-            total += val
-            self.helper(target,checker, main, curr, total, seen)
-            total -= curr.pop()
+        def helper(combination,total):
+            if total >= target:
+                if total == target:
+                    print(combination)
+                    ans.add(tuple(sorted(combination.copy())))       
+                return
+
+            for index in range(len(candidates)):
+                current = total + candidates[index]
+                combination.append(candidates[index])
+                helper(combination,current)
+                combination.pop()
+                current -= candidates[index]
             
+        helper([],0)
+
+        return list(ans)
+
