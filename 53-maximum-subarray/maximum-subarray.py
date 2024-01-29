@@ -14,18 +14,17 @@ class Solution:
         # return max_sum
 
         #Approach2
-        overall_max = nums[-1]
+        overall_max = nums[0]
         current_sum = 0
         for index in range(len(nums)):
-            if nums[index] > current_sum + nums[index]:
+            if current_sum + nums[index] < nums[index]:
                 current_sum = nums[index]
-                if current_sum > overall_max:
-                    overall_max = current_sum
+                if nums[index] > overall_max:
+                    overall_max = nums[index]
             else:
                 current_sum += nums[index]
                 if current_sum > overall_max:
                     overall_max = current_sum
-        
         return overall_max
             
 
