@@ -16,9 +16,7 @@ class Solution:
             if start == len(s):
                 ans.append(current.copy())
                 return
-
             for index in range(start,len(s)):
-                print(current,"start index ->",start)
                 if isPalindrome(start,index):
                     current.append(s[start:index+1])
                     helper(current,index + 1)
