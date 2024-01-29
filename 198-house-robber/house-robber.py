@@ -1,33 +1,29 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        dictionary = {}
-
-        def helper(index):
-            if index + 2 >= len(nums) or index in dictionary:
-                if index in dictionary:
-                    return dictionary[index]
-                if index + 2 >= len(nums):
-                    dictionary[index] = nums[index]
-                    return dictionary[index]
-            
-            max_sum = nums[index]
-            for val in range(index + 2, len(nums)):
-                temp = helper(val)
-                max_sum += temp
-                if index not in dictionary or max_sum > dictionary[index]:
-                    dictionary[index] = max_sum
-                max_sum -= temp
-            
-            return dictionary[index]
-            
-        for val in range(0, len(nums)):
-            helper(val)
-        if 0 in dictionary and 1 in dictionary:
-            if dictionary[0] > dictionary[1]:
-                return dictionary[0]
-            else:
-                return dictionary[1]
-        if 0 in dictionary:       
-            return dictionary[0]
+        if len(nums) == 1:
+            return nums[0]
         
+        dp = {}
 
+        def helper(starter):
+            if starter >= len(nums) - 1:
+                if starter == len(nums) - 1:
+                    return nums[starter]
+                else:
+                    return 0
+            if starter in dp:
+                return dp[starter]
+            print(starter,'starter')
+            for index in range(starter,len(nums)):
+                print(index)
+                total = nums[index]
+                for house in range(index + 2, len(nums)):
+                    print(house,"house")
+                    curr_neighbor = helper(house)
+                    if nums[index] + curr_neighbor > total:
+                        total = nums[index] + curr_neighbor
+                dp[index] = total
+            return dp[starter]
+       
+        helper(0)
+        return max(dp[0] if 0 in dp else 0, dp[1] if 1 in dp else 0)
