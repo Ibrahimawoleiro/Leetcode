@@ -13,12 +13,9 @@ class Solution:
                     return 0
             if starter in dp:
                 return dp[starter]
-            print(starter,'starter')
             for index in range(starter,len(nums)):
-                print(index)
                 total = nums[index]
                 for house in range(index + 2, len(nums)):
-                    print(house,"house")
                     curr_neighbor = helper(house)
                     if nums[index] + curr_neighbor > total:
                         total = nums[index] + curr_neighbor
