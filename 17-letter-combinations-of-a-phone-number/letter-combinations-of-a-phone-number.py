@@ -1,6 +1,5 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        print(digits)
         dictionary = {
             "2":'abc',
             "3":'def',
