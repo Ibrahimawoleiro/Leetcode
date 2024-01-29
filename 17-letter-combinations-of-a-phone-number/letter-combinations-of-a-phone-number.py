@@ -22,7 +22,6 @@ class Solution:
                 if len(combination) > 0:
                     ans.append(combination)
                 return 
-            print(combination)
             for val in arr[index]:
                 combination = combination + val
                 helper(combination , index + 1)
