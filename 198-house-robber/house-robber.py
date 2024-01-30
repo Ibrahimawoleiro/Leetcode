@@ -34,7 +34,6 @@ class Solution:
             if index == len(nums) - 1:
                 continue
             nums[index] = max(nums[index] + (nums[index + 2] if index + 2 < len(nums) else 0),nums[index + 1])
-        print(nums)
         return max(nums[0],nums[1])
 
          
