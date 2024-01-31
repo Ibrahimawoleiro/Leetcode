@@ -26,7 +26,7 @@ class Solution:
         #     if count == 0:
         #         return nums[index]
 
-        #Approach 3
+        # #Approach 3
 
         res = 0
         for n in nums:
