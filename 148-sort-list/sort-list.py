@@ -5,7 +5,7 @@
 #         self.next = next
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
+        #Approach 1
         arr = []
         
         while( head != None):
