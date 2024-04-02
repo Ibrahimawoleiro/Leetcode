@@ -12,19 +12,42 @@ class Solution {
         // }
         // return maximum;
 
-        //2
+        // //2
+        // int i = 0;
+        // int j = 0;
+        // int maximum = 0;
+        // while(j < prices.length){
+        //     if(prices[i] < prices[j]){
+        //         if(prices[j] - prices[i] > maximum){
+        //             maximum = prices[j] - prices[i];
+        //         }
+        //     }else{
+        //         i = j;
+        //     }
+        //     j++;
+        // }
+        // return maximum;
+
+        //3
         int i = 0;
-        int j = 0;
+        int[] diff = new int[prices.length - 1];
+        while(i+1<prices.length){
+            diff[i] = prices[i+1] - prices[i];
+            i+=1;
+        }
         int maximum = 0;
-        while(j < prices.length){
-            if(prices[i] < prices[j]){
-                if(prices[j] - prices[i] > maximum){
-                    maximum = prices[j] - prices[i];
-                }
+        int curr_sum = 0;
+        int runner = 0;
+        while(runner < diff.length){
+            if (diff[runner] + curr_sum > diff[runner]){
+                curr_sum += diff[runner];
             }else{
-                i = j;
+                curr_sum = diff[runner];
             }
-            j++;
+            if(curr_sum > maximum){
+                maximum = curr_sum;
+            }
+            runner+=1;
         }
         return maximum;
     }
