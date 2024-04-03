@@ -29,8 +29,7 @@ class Solution {
         }
         
         var mid: Int = Int((high+low)/2)
-        print("low \(low) mid \(mid) high \(high)")
-        print(nums[mid])
+
         var curr = TreeNode(nums[mid])
 
         curr.left = recursive(low, mid - 1, array: nums)
