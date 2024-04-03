@@ -11,7 +11,6 @@ class Solution {
         }
 
         arr[r][c] = i;
-        System.out.println("row"+r+"column"+c);
         recursive(r-1,c,f,i,arr);
         recursive(r+1,c,f,i,arr);
         recursive(r,c-1,f,i,arr);
