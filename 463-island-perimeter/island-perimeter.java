@@ -22,7 +22,6 @@ class Solution {
         }else if(grid[r][c] != 0 && grid[r][c] != 1){
             return 0;
         }
-        System.out.println("Row "+r+"Column "+ c);
         grid[r][c] = 5;
         return recursive(r-1,c,grid) + recursive(r+1,c,grid) + recursive(r,c+1,grid) + recursive(r,c-1,grid);
     }
