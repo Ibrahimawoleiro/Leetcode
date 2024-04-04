@@ -39,7 +39,6 @@ class Solution {
             result[index] = count
             count = 0
         }
-        print(store)
         return result
     }
 }
