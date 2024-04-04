@@ -22,21 +22,24 @@ class Solution {
         var store: [Int: Int] = [:]
         var result: [Int] = Array(repeating: 0, count: nums.count)
         for index in 0..<nums.count{
+            if store.keys.contains(nums[index]){
+                    result[index] = store[nums[index]]!
+                    continue
+            }
             for checker_index in 0..<nums.count{
                 if index == checker_index{
                     continue
-                }else if store.keys.contains(nums[index]){
-                    result[index] = store[nums[index]]!
-                    
                 }
                 if nums[checker_index] < nums[index]{
                     count+=1
                 }
+                
             }
-            store[index] = count
+            store[nums[index]] = count
             result[index] = count
             count = 0
         }
+        print(store)
         return result
     }
 }
