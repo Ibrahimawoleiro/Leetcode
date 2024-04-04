@@ -27,11 +27,13 @@ class Solution {
                     continue
                 }else if store.keys.contains(nums[index]){
                     result[index] = store[nums[index]]!
+                    
                 }
                 if nums[checker_index] < nums[index]{
                     count+=1
                 }
             }
+            store[index] = count
             result[index] = count
             count = 0
         }
