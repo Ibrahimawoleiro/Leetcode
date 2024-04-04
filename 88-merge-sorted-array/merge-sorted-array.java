@@ -3,7 +3,6 @@ class Solution {
         int i = (m - 1);
         int j = n - 1;
         int f = m + n - 1;
-        System.out.println(f);
         while(f >= 0){
             if(i>=0 && j>=0){
                 if (nums1[i] > nums2[j]){
