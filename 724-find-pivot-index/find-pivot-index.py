@@ -1,5 +1,6 @@
 class Solution:
     def pivotIndex(self, nums: List[int]) -> int:
+        #1
         prefix = [0 for val in range(len(nums))]
         postfix = [0 for val in range(len(nums))]
 
