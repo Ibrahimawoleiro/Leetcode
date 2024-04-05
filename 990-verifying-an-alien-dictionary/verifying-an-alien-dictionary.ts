@@ -23,7 +23,6 @@ function isAlienSorted(words: string[], order: string): boolean {
             }else if(j >= words[i].length){
                 return false
             }else if(dictionary[words[i-1][j]] > dictionary[words[i][j]]){
-
                 return false
             }
         }
