@@ -1,6 +1,5 @@
 function isAlienSorted(words: string[], order: string): boolean {
 
-    console.log(order[0])
     if (words.length === 1){
         return true
     }
@@ -17,7 +16,6 @@ function isAlienSorted(words: string[], order: string): boolean {
             max_length = word.length
         }
     }
-    console.log(max_length)
     for(let i = 1; i<words.length; i++){
         for(let j = 0; j<max_length; j++){
             if(j>=words[i-1].length || dictionary[words[i-1][j]] < dictionary[words[i][j]]){
