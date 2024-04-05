@@ -4,7 +4,7 @@ function isAlienSorted(words: string[], order: string): boolean {
         return true
     }
 
-    let dictionary:Record<number, string> = {}
+    let dictionary:Record<string, number> = {}
 
     for (let index in order.split("")){
         dictionary[order[index]] = parseInt(index)
@@ -23,6 +23,7 @@ function isAlienSorted(words: string[], order: string): boolean {
             }else if(j >= words[i].length){
                 return false
             }else if(dictionary[words[i-1][j]] > dictionary[words[i][j]]){
+
                 return false
             }
         }
