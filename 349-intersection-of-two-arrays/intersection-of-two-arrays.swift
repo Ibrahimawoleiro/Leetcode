@@ -29,10 +29,8 @@ class Solution {
         }
         for val in nums2{
             if checker.contains(val){
-                if let curr = checker.remove(val){
-                    result.append(curr)
-                }
-                
+                guard let curr = checker.remove(val) else {continue}
+                result.append(curr)
             }
         }
         return result
