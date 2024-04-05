@@ -1,0 +1,35 @@
+function isAlienSorted(words: string[], order: string): boolean {
+
+    console.log(order[0])
+    if (words.length === 1){
+        return true
+    }
+
+    let dictionary:Record<number, string> = {}
+
+    for (let index in order.split("")){
+        dictionary[order[index]] = parseInt(index)
+    }
+    let max_length: number = 0
+
+    for(let word of words){
+        if (word.length > max_length){
+            max_length = word.length
+        }
+    }
+    console.log(max_length)
+    for(let i = 1; i<words.length; i++){
+        for(let j = 0; j<max_length; j++){
+            if(j>=words[i-1].length || dictionary[words[i-1][j]] < dictionary[words[i][j]]){
+                break
+            }else if(j >= words[i].length){
+                return false
+            }else if(dictionary[words[i-1][j]] > dictionary[words[i][j]]){
+                console.log(j+"index words->"+dictionary[words[i-1][j]] +" first -> second"+dictionary[words[i][j]])
+                return false
+            }
+        }
+    }
+
+    return true
+};
