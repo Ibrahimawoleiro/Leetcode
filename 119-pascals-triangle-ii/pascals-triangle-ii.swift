@@ -7,7 +7,6 @@ class Solution {
     }
 
     func recursive(_ ans:inout [[Int]], _ level:Int) -> Void{
-        print(level)
         if level == 0{
             ans.append([1])
             return
