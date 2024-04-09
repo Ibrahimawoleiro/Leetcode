@@ -5,7 +5,6 @@ function flipAndInvertImage(image: number[][]): number[][] {
         while(j <= k){
             let left: number = image[i][j];
             let right: number = image[i][k];
-            console.log(`left${left}   right${right}`)
             let temp: number = left;
             left = right;
             right = temp;
