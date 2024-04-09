@@ -5,5 +5,4 @@ class Solution:
             for number in arr:
                 if number < 0:
                     count+=1
-
         return count
