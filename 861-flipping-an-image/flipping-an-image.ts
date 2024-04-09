@@ -20,7 +20,6 @@ function flipAndInvertImage(image: number[][]): number[][] {
             }
             j++;
             k--;
-            console.log(i)
         }
     }
             return image;
