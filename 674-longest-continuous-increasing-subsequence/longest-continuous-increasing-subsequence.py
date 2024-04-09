@@ -9,10 +9,8 @@ class Solution:
                 end+=1
                 continue
             if nums[end] > nums[start]:
-                print(nums[start], nums[end])
                 count+=1
                 if count > maximum_count:
-                    print(count)
                     maximum_count = count
                 end+=1
                 start+=1
