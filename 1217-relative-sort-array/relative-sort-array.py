@@ -24,7 +24,6 @@ class Solution:
         q.reverse()
         while(q):
             curr = q.pop()
-            print(curr)
             while(store[curr] > 0):
                 ans.append(curr)
                 store[curr] -= 1
