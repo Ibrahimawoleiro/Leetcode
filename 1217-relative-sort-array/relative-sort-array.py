@@ -14,7 +14,6 @@ class Solution:
                 store[val] = 1
             else:
                 store[val] += 1
-        
         ans = []
         for val in arr2:
             while(store[val] > 0):
