@@ -4,7 +4,6 @@ class Solution:
         s = -(2**32)
         t = -(2**32)
         for val in nums:
-            print(f,s,t)
             if val > f:
                 temp = f
                 f = val
