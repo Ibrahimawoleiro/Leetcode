@@ -11,7 +11,6 @@ class Solution:
                 store_A[-1 * boxTypes[arr_index][1]] = [arr_index]
                 store_B[arr_index] = boxTypes[arr_index][0]
             else:
-                print(store_A[-1 * boxTypes[arr_index][1]], 'jhgfghj')
                 store_A[-1 * boxTypes[arr_index][1]].append(arr_index)
                 store_B[arr_index] = boxTypes[arr_index][0]
         
