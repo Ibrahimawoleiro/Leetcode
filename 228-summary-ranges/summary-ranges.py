@@ -5,7 +5,6 @@ class Solution:
         i = 0
         j = 0
         while(j < len(nums)):
-            print(i,'i',j,'j')
             if i == j:
                 curr_range += str(nums[i])
                 j+=1
