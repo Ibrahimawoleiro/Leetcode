@@ -9,7 +9,6 @@ class Solution:
                 char_index = 0
                 while char_index < len(word):
                     if word[char_index] not in check:
-                        print(word[char_index])
                         break
                     char_index+=1
                 
