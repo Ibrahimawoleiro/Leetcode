@@ -6,7 +6,6 @@ class Solution:
                 store[chars[index]] = 1
             else:
                 store[chars[index]] += 1
-        print(store)
         total = 0
         for word in words:
             curr_store = store.copy()
