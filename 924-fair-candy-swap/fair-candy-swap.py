@@ -10,7 +10,6 @@ class Solution:
         j = len(bobSizes) - 1
 
         while(i >= 0 and j >= 0):
-            print(alice_sum - aliceSizes[i] ,bob_sum - bobSizes[j])
             if alice_sum - aliceSizes[i] + bobSizes[j] == bob_sum - bobSizes[j] + aliceSizes[i]:
                 return [aliceSizes[i], bobSizes[j]]
             elif alice_sum - aliceSizes[i] + bobSizes[j] > bob_sum - bobSizes[j] + aliceSizes[i]:
