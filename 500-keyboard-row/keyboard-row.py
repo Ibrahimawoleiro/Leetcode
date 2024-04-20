@@ -11,7 +11,6 @@ class Solution:
                     if word[char_index] not in check:
                         break
                     char_index+=1
-                
                 if char_index == len(word):
                     ans.append(word)
                     break
