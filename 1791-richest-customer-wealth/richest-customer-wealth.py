@@ -5,5 +5,4 @@ class Solution:
             curr = sum(arr)
             if curr > most_wealth:
                 most_wealth = curr
-        
         return most_wealth
