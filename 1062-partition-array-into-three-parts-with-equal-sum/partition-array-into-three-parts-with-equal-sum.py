@@ -8,7 +8,6 @@ class Solution:
         checker = sub_sum
         for index in range(len(arr)):
             checker -= arr[index]
-            print(checker)
             if checker == 0:
                 count -= 1
                 checker = sub_sum
