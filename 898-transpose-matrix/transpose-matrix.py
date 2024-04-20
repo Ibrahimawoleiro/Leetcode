@@ -10,5 +10,4 @@ class Solution:
                 if ans_r >= len(ans):
                     ans_c +=1
                     ans_r = 0
-        
         return ans
