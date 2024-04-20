@@ -2,7 +2,6 @@ import heapq
 class Solution:
     def frequencySort(self, nums: List[int]) -> List[int]:
         store_A = collections.Counter(nums)
-        print(store_A)
         store_B = {}
         for key, value in store_A.items():
             if value not in store_B:
