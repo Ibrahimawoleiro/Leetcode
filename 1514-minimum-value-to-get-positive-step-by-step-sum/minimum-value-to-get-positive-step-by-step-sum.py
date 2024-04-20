@@ -14,6 +14,5 @@ class Solution:
         smallest = min(prefix)
         if smallest > 0:
             return 1
-        print(prefix)
         return -1 * smallest + 1
 
