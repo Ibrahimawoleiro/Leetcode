@@ -19,7 +19,6 @@ class Solution {
         this.traversal(root,stack);
         TreeNode curr = null;
         while(!stack.isEmpty()){
-            System.out.println(stack.peek().val);
             TreeNode stack_top = stack.pop();
             stack_top.right = curr;
             curr = stack_top;
