@@ -2,7 +2,6 @@ class Solution {
     public int countStudents(int[] students, int[] sandwiches) {
         int one_students = 0;
         int zero_students = 0;
-        //Stack<Integer> stack = new Stack<>();
         int i = 0;
         for(int n: students){
             if(n == 1){
@@ -13,7 +12,6 @@ class Solution {
         }
         while(i < sandwiches.length){
             int curr = sandwiches[i];
-            System.out.println("Top of stack "+curr+" one_students"+one_students+" 0"+zero_students);
             if((curr == 0 && zero_students == 0) || (curr == 1 && one_students == 0)){
                 return one_students + zero_students;
             }else if(curr == 0){
