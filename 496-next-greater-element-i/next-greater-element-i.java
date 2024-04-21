@@ -10,15 +10,12 @@ class Solution {
                 store.put(nums2[e], -1);
             }else{
                 while(!stack.isEmpty() && stack.peek() <= nums2[e]){
-                    System.out.println(stack.peek());
                     stack.pop();
                 }
                 if(stack.isEmpty()){
                     stack.push(nums2[e]);
                     store.put(nums2[e], -1);
                 }else{
-                    
-                    System.out.println("stack"+stack.peek()+"curr"+nums2[e]);
                     store.put(nums2[e], stack.peek());
                     stack.push(nums2[e]);
                 }
