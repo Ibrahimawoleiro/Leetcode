@@ -15,11 +15,7 @@
  */
 class Solution {
     func isSymmetric(_ root: TreeNode?) -> Bool {
-        if root!.right == nil && root!.left == nil{
-            return true;
-        }else if root!.right == nil || root!.left == nil{
-            return false;
-        }
+        
         return self.recursive(left_child: root!.left, right_child: root!.right);
     }
 
