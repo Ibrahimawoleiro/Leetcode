@@ -15,26 +15,19 @@
  */
 class Solution {
     func sumOfLeftLeaves(_ root: TreeNode?) -> Int {
-        var sum: Int = 0;
-        self.recursive(root, &sum, direction:" ");
+        var sum = 0
+        traverse(root, direction: nil, sum: &sum)
         return sum
     }
 
-    func recursive(_ root: TreeNode?, _ sum: inout Int, direction d: Character) -> Void {
-        guard let root = root else {return }
-        if let left = root.left, let right = root.right{
+    private func traverse(_ node: TreeNode?, direction: Character?, sum: inout Int) {
+        guard let node = node else { return }
 
-        }else if let left = root.left{
-
+        if node.left == nil && node.right == nil && direction == "l" {
+            sum += node.val
         }
-        else if let right = root.right{
 
-        }else{
-            if d == "l"{
-                sum += root.val
-            }
-        }
-        self.recursive(root.left, &sum, direction: "l");
-        self.recursive(root.right, &sum, direction: "r");
+        traverse(node.left, direction: "l", sum: &sum)
+        traverse(node.right, direction: "r", sum: &sum)
     }
 }
