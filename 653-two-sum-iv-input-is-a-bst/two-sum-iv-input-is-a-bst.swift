@@ -16,7 +16,6 @@
 class Solution {
     func findTarget(_ root: TreeNode?, _ k: Int) -> Bool {
         var store: Set<Int> = Set<Int>();
-        var count: Int = 2;
         var ans: Bool? = self.recursive(root, &store, k);
         if let ans{
             return true;
