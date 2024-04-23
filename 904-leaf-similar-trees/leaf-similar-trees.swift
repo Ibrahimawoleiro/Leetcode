@@ -17,7 +17,6 @@ class Solution {
     func leafSimilar(_ root1: TreeNode?, _ root2: TreeNode?) -> Bool {
         var queue: [Int] = [Int]()
         self.traversal1(root1, &queue);
-        print(queue)
         return self.traversal2(root2, &queue) && queue.count == 0;
     }
     func traversal1(_ root: TreeNode?, _ queue: inout [Int]) -> Void{
@@ -37,7 +36,6 @@ class Solution {
             }
             var enqueue : Int = queue.removeFirst()
             if root.val != enqueue {
-                print(root.val, enqueue)
                 return false;
             }
         }
