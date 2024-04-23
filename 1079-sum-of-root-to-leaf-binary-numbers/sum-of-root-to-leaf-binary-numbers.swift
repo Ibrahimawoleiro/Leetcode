@@ -19,10 +19,8 @@ class Solution {
         var ans: [[Int]] = [[Int]]();
         var tracker: [Int] = [Int]();
         self.recursive(root, &ans, &tracker);
-        print(ans.count)
         for arr in ans{
             var curr: Int = 0;
-            print(arr)
             var runner: Int = arr.count - 1;
             var power: Int = 0;
             while(runner >= 0){
@@ -40,7 +38,6 @@ class Solution {
             return;
          };
          tracker.append(root.val);
-
          if root.right == nil && root.left == nil{
             arr.append(Array(tracker)); 
          }else if root.right != nil && root.left == nil{
