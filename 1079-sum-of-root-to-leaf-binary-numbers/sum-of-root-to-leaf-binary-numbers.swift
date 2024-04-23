@@ -42,7 +42,6 @@ class Solution {
          tracker.append(root.val);
 
          if root.right == nil && root.left == nil{
-            print("tracker \(tracker)");
             arr.append(Array(tracker)); 
          }else if root.right != nil && root.left == nil{
             self.recursive(root.right, &arr, &tracker);
