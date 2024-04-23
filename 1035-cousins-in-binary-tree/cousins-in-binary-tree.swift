@@ -21,7 +21,6 @@ class Solution {
         var d_c: Int = 0;
         self.traversal(root, d_c, &store, x, y);
         if let x_value = store[x],let y_value = store[y]{
-            print(x_value, y_value)
             return x_value.0 == y_value.0 && x_value.1 != y_value.1;
         }
         return false;
