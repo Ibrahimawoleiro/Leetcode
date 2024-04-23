@@ -22,7 +22,6 @@ class Solution {
         if let left = left , let right = right{
 
             if left.val != right.val{
-                print("left \(left.val) right \(right.val)");
                 return false
             }
             return self.recursive(left.left, right.left) && self.recursive(left.right, right.right);
