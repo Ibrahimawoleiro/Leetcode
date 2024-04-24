@@ -5,7 +5,6 @@ class Solution {
         var helper: Int = 0;
         var x: Int = 2;
         while(r <= n){
-            print(r);
             if r == 0{
                 r+=1;
                 helper += 1;
