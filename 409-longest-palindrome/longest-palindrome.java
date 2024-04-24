@@ -15,7 +15,6 @@ class Solution {
         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
             char key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.println(value+". ."+key);
             if(value % 2 == 0){
                 total += value;
             }else{
