@@ -11,7 +11,6 @@ class Solution:
             if checker == 0:
                 count -= 1
                 checker = sub_sum
-            elif count > 0 and index == len(arr) - 1:
-                return False
+            
         
         return count <= 0
