@@ -25,7 +25,6 @@ class Solution {
             }
             
             if(r_count == l_count){
-                System.out.println("l "+l+" r "+r);
                 ans+=1;
                 l_count = 0;
                 r_count = 0;
