@@ -7,7 +7,6 @@ class Solution:
                 count+=1
                 continue
             clockwise = abs(ord(prev)- ord(val))
-            print(clockwise)
             count += min(clockwise, 26 - clockwise) + 1
             prev = val
         return count
