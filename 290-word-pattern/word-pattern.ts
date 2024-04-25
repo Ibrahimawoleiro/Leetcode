@@ -3,8 +3,6 @@ function wordPattern(pattern: string, s: string): boolean {
     let s_array : string[] = s.split(" ");
     let checker : Set<string> = new Set();
     let store: Map<string, string> = new Map();
-    console.log(pattern_array.length)
-    console.log(s_array.length)
     if(pattern_array.length != s_array.length){
         return false;
     }
