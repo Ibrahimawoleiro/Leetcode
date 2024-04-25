@@ -4,10 +4,8 @@ class Solution:
         i = 0
         j = len(colors) - 1
         while(i < len(colors)):
-            print(j, i)
             if colors[j] != colors[i]:
                 if j - i > max_distance:
-                    print(j, i)
                     max_distance = j - i
                 j = len(colors) - 1
                 i+=1
