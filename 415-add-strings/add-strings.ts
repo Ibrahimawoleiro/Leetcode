@@ -15,7 +15,6 @@ function addStrings(num1: string, num2: string): string {
                 remainder = 0;
             }
             ans.push(`${curr}`);
-            console.log(`s1 ${s1} s2 ${s2} curr ${curr} remainder ${remainder}`);
             num1_last--;
             num2_last--;
         }else if (num1_last >= 0){
@@ -28,7 +27,6 @@ function addStrings(num1: string, num2: string): string {
                 remainder = 0;
             }
             ans.push(`${curr}`);
-            console.log(`s1 ${s1} curr ${curr} remainder ${remainder}`);
             num1_last--;
         }else{
             const s2: string = num2.charAt(num2_last);
@@ -40,7 +38,6 @@ function addStrings(num1: string, num2: string): string {
                 remainder = 0;
             }
             ans.push(`${curr}`);
-            console.log(`s2 ${s2} curr ${curr} remainder ${remainder}`);
             num2_last--;
         }
     }
