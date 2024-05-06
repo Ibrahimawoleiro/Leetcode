@@ -7,5 +7,4 @@ class Solution:
                 return abs(nums[index])
             else:
                 nums[abs(nums[index])] *= -1
-
         return -1
