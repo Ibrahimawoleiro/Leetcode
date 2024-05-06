@@ -16,8 +16,5 @@ class Solution:
             else:
                 c.remove(s[l])
                 l += 1
-            
-            print(l,r)
         
-        print(s[l])
         return max_length
