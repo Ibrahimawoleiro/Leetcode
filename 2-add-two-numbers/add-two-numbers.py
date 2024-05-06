@@ -5,100 +5,46 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        extra = 0
-        result = ListNode()
-        iterator = result
+        rem = 0
+        ans = ListNode()
+        result = ans
         while(l1 or l2):
             if l1 and l2:
-                if extra:
-                    addition = extra + l1.val + l2.val
-                    if addition>=10:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                    else:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
+                curr = l1.val + l2.val + rem
+                if curr > 9:
+                    ans.next = ListNode(curr % 10)
+                    rem = 1
                 else:
-                    addition = l1.val + l2.val
-                    iterator.next = ListNode(addition % 10)
-                    iterator = iterator.next
-                    checker = int(floor(addition / 10))
-                    if checker:
-                        extra = checker
-                    else:
-                        extra = 0
+                    ans.next = ListNode(curr)
+                    rem = 0
+                ans = ans.next
                 l1 = l1.next
                 l2 = l2.next
             elif l1:
-
-                if extra:
-                    addition = l1.val + extra
-                    if addition >= 10:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
-                    else:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
+                curr = l1.val + rem
+                if curr > 9:
+                    ans.next = ListNode(curr % 10)
+                    rem = 1
                 else:
-                        addition = l1.val 
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
-
+                    ans.next = ListNode(curr)
+                    rem = 0
                 l1 = l1.next
-            elif l2:
-                if extra:
-                    addition = l2.val + extra
-                    if addition >= 10:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
-                    else:
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
+                ans = ans.next
+            else:
+                curr = l2.val + rem
+                if curr > 9:
+                    ans.next = ListNode(curr % 10)
+                    rem = 1
                 else:
-                        addition = l2.val 
-                        iterator.next = ListNode(addition % 10)
-                        iterator = iterator.next
-                        checker = int(floor(addition / 10))
-                        if checker:
-                            extra = checker
-                        else:
-                            extra = 0
-                    
+                    ans.next = ListNode(curr)
+                    rem = 0
                 l2 = l2.next
-        if extra:
-            iterator.next = ListNode(extra)
-
+                ans = ans.next
+        
+        if rem == 1:
+            ans.next = ListNode(1)
+        
         return result.next
+
+
+        
