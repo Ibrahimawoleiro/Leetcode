@@ -19,7 +19,7 @@ class Solution:
 
             #Even case
             i = index
-            j = index + 1
+            j = index - 1
             while(i >= 0 and j < len(s) and s[i] == s[j]):
                 if (j - i)+ 1 > len(m):
                     m = s[i: j+1]
