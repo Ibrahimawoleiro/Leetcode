@@ -15,8 +15,8 @@ class Solution:
                 return l
             elif nums[r] == target:
                 return r
-            if target > nums[l]:
+            if target > nums[0]:
                 r -= 1
-            elif target < nums[l]:
+            elif target < nums[0]:
                 l += 1
         return -1 
