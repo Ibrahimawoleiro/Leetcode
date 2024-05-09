@@ -1,21 +1,19 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         ans = set()
-
-        def helper(combination,total):
-            if total >= target:
-                if total == target:
-                    ans.add(tuple(sorted(combination.copy())))       
-                return
-
-            for index in range(len(candidates)):
-                current = total + candidates[index]
-                combination.append(candidates[index])
-                helper(combination,current)
-                combination.pop()
-                current -= candidates[index]
+        def helper(i,curr, s):
+            if s >= target:
+                if s == target:
+                    ans.add(tuple(curr.copy()))
+                return 
             
-        helper([],0)
+            for index in range(i , len(candidates)):
+                current = s + candidates[index]
+                curr.append(candidates[index])
+                print("Current number", candidates[i],"Current arr", curr,"Current sum", current)
+                helper(index, curr, current)
+                curr.pop()
+                current -= candidates[index]
 
-        return list(ans)
-
+        helper(0,[],0)
+        return ans
