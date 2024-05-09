@@ -1,21 +1,16 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        #Approach 1
         nums.sort()
-        arr = set([()])
-        def helper(checker,index):
-            if index > len(nums) - 1:
-                return
-            checker.append(nums[index])
-            arr.add(tuple(checker.copy()))
-            index += 1
-            while(index < len(nums)):
-                helper(checker,index)
-                checker.pop()
-                index += 1
-            
-            
-        for index in range(len(nums)):
-            helper([],index)
+        ans = set()
+        ans.add(())
+        def helper(curr, i):
+            if i >= len(nums):
+                return 
+            for index in range(i ,len(nums)):
+                curr.append(nums[index])
+                ans.add(tuple(curr.copy()))
+                helper(curr, index + 1)
+                curr.pop()
 
-        return list(arr)
+        helper([], 0)
+        return list(ans)
