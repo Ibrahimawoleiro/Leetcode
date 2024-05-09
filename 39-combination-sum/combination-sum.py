@@ -10,7 +10,7 @@ class Solution:
             for index in range(i , len(candidates)):
                 current = s + candidates[index]
                 curr.append(candidates[index])
-                print("Current number", candidates[i],"Current arr", curr,"Current sum", current)
+
                 helper(index, curr, current)
                 curr.pop()
                 current -= candidates[index]
