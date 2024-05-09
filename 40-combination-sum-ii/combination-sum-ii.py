@@ -1,24 +1,22 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        print(len(candidates))
-        #Approach 1
+        ans = set()
         candidates.sort()
-        ans = []
-        def helper(combination,total,curr_index):
-            if total >= target:
-                if total == target:
-                    ans.append(combination.copy())    
-                return
+        def helper(i,curr, s):
+            if s >= target:
+                if s == target:
+                    ans.add(tuple(curr.copy()))
+                return 
             dp = set()
-            for index in range(curr_index,len(candidates)):
+            for index in range(i , len(candidates)):
                 if candidates[index] in dp:
                     continue
                 dp.add(candidates[index])
-                current = total + candidates[index]
-                combination.append(candidates[index])
-                helper(combination,current,index+ 1)
-                combination.pop()
+                current = s + candidates[index]
+                curr.append(candidates[index])
+                helper(index + 1, curr, current)
+                curr.pop()
                 current -= candidates[index]
-        helper([],0,0)
 
-        return list(ans)
+        helper(0,[],0)
+        return ans
