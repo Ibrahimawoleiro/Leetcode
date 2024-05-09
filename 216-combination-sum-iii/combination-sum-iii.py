@@ -1,22 +1,19 @@
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
-        #Approach 1
-        candidates = [num for num in range(1,10)]
+        arr = [i + 1 for i in range(9)]
         ans = []
-        
-        def helper(combination,total,curr_index):
-            if total >= n:
-                print(total)
-                if total == n and len(combination) == k:  
-                    ans.append(combination.copy())    
+        def helper(i,curr,s):
+            if len(curr) == k or s >= n:
+                if len(curr) == k and s == n:
+                    ans.append(curr.copy())
                 return
-            print(total,curr_index,)
-            for index in range(curr_index,len(candidates)):
-                current = total + candidates[index]
-                combination.append(candidates[index])
-                helper(combination,current,index+ 1)
-                combination.pop()
-                current -= candidates[index]
-        helper([],0,0)
+            
+            for index in range(i , len(arr)):
+                c_sum = s + arr[index]
+                curr.append(arr[index])
+                helper(index + 1, curr, c_sum)
+                c_sum -= arr[index]
+                curr.pop()
 
-        return list(ans)
+        helper(0, [], 0)
+        return ans
