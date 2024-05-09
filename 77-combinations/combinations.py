@@ -1,19 +1,17 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        arr  = [number for number in range(1,n+1)]
-        
+        arr = [i+1 for i in range(n)]
         ans = []
-
-        def helper(curr_index,combination):
-            if len(combination) == k:
-                ans.append(combination.copy())
+        def helper(i,curr):
+            if len(curr) == k:
+                ans.append(curr.copy())
                 return
-            
-            for index in range(curr_index, len(arr)):
-                combination.append(arr[index])
-                helper(index + 1, combination)
-                combination.pop()
+            for index in range(i,len(arr)):
+                curr.append(arr[index])
+                helper(index+1, curr)
+                curr.pop()
 
-        helper(0,[])
+        helper(0, [])
+
         return ans
             
