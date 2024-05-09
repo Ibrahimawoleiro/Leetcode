@@ -7,7 +7,6 @@ class Solution:
                 return 
             for index in range(i, len(nums)):
                 curr.append(nums[index])
-                print(index, curr)
                 ans.append(curr.copy())
                 helper(curr, index + 1)
                 curr.pop()
