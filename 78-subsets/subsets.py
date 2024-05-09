@@ -1,19 +1,17 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        arr = [[]]
-        def helper(checker,index):
-            if index > len(nums) - 1:
-                return
-            checker.append(nums[index])
-            arr.append(checker.copy())
-            index += 1
-            while(index < len(nums)):
-                helper(checker,index)
-                checker.pop()
-                index += 1
-            
-            
-        for index in range(len(nums)):
-            helper([],index)
+        ans = [[]]
 
-        return arr
+        def helper(curr, i):
+            if i >= len(nums):
+                return 
+            for index in range(i, len(nums)):
+                curr.append(nums[index])
+                print(index, curr)
+                ans.append(curr.copy())
+                helper(curr, index + 1)
+                curr.pop()
+        helper([], 0)
+        return ans
+
+            
