@@ -1,30 +1,31 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         ans = []
-
-        def helper(build, no_open, no_close):
-            if no_open == n and no_close == n:
-                ans.append(build)
+        def helper(curr,o, c ):
+            if len(curr) == 2*n:
+                print(curr)
+                ans.append(curr[:])
                 return 
             
-            if no_open == no_close:
-                build = build + "("
-                no_open += 1
-                helper(build, no_open, no_close)
+            if o > c:
+                #Two options: Add ( or add )
+                if o < n:
+                    curr += '('
+                    helper(curr, o + 1, c)
+                    curr = curr[:-1]
+                curr += ')'
+                helper(curr, o, c + 1)
             else:
-                if no_open < n:
-                    build = build + "("
-                    no_open += 1
-                    helper(build, no_open, no_close)
-                    no_open -= 1
-                    build = build[:-1]
-                    build = build + ")"
-                    no_close += 1
-                    helper(build, no_open, no_close)
+                if o < n:
+                    curr += '('
+                    helper(curr, o + 1, c)
+                    curr = curr[:-1]
                 else:
-                    build = build + ")"
-                    no_close += 1
-                    helper(build, no_open, no_close)
+                    curr += ')'
+                    helper(curr, o, c + 1)
 
-        helper("",0,0)
+        helper('', 0, 0)
         return ans
+
+
+
