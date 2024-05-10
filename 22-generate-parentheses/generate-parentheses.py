@@ -3,7 +3,6 @@ class Solution:
         ans = []
         def helper(curr,o, c ):
             if len(curr) == 2*n:
-                print(curr)
                 ans.append(curr[:])
                 return 
             
