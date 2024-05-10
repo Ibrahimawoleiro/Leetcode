@@ -1,33 +1,28 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         dictionary = {
-            "2":'abc',
-            "3":'def',
-            "4":'ghi',
-            "5":'jkl',
-            "6":'mno',
-            "7":'pqrs',
-            "8":'tuv',
-            "9":'wxyz'
+            '2': 'abc',
+            '3': 'def',
+            '4': 'ghi',
+            '5': 'jkl',
+            '6': 'mno',
+            '7': 'pqrs',
+            '8': 'tuv',
+            '9': 'wxyz'
         }
 
-        arr = []
+        #Make a recursive function to loop through every value at index for diff combination
         ans = []
-        for val in digits:
-            arr.append(dictionary[val])
-        
-        def helper(combination,index):
-            if index == len(digits):
-                if len(combination) > 0:
-                    ans.append(combination)
+        def recursive(index,curr):
+            if index >= len(digits):
+                if len(curr) > 0:
+                    ans.append(curr)
                 return 
-            for val in arr[index]:
-                combination = combination + val
-                helper(combination , index + 1)
-                combination = combination[:-1]
+            for val in dictionary[digits[index]]:
+                #Add one of the val matched to digits[i] to curr
+                curr = curr + val
+                recursive(index + 1, curr)
+                curr = curr[:-1]
 
-        helper("",0)
+        recursive(0, '')
         return ans
-
-
-
