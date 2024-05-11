@@ -18,7 +18,6 @@ class Solution:
             return dic[i]
         helper(0)
         helper(1)
-        print(dic)
         if len(nums) > 1:
             if 1 in dic:
                 return max(dic[0], dic[1])
