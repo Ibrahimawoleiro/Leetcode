@@ -71,10 +71,4 @@ class Solution:
             for n in dic[val]:
                 curr.neighbors.append(joiner(n))
             return curr
-
-        
-
-        print("visited",visited)
-        print("dic",dic)
-        print("dic_neighbor",dic_neighbors)
         return joiner(1)
