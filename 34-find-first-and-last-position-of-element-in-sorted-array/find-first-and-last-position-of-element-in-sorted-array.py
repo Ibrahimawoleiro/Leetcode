@@ -22,7 +22,6 @@ class Solution:
                     if nums[mid] == target:
                         pos = mid
                         end = mid - 1
-                        print(pos, end)
                     elif nums[mid] < target:
                         start = mid + 1
                     else:
@@ -56,7 +55,6 @@ class Solution:
         if start == -1:
             return [-1, -1]
         end = upper(0, len(nums) - 1, -1)
-
         return [start, end]
 
 
