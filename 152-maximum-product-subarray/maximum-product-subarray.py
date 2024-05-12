@@ -3,7 +3,6 @@ class Solution:
         
 
         def helper(arr):
-            print(arr)
             if len(arr) == 0:
                 return 0
 
@@ -12,8 +11,6 @@ class Solution:
             negative_count = 0
             negative_indexes = []
 
-            #Count the number of zeroes and get the zero indexes
-            #Count the number of negatives too
             for index in range(len(arr)):
                 if arr[index] == 0:
                     zero_count += 1
@@ -21,7 +18,6 @@ class Solution:
                 if arr[index] < 0:
                     negative_count += 1
                     negative_indexes.append(index)
-            print(negative_count)
             if zero_count == 0 and negative_count % 2 == 0:
                 curr = 1
                 for num in arr:
@@ -32,17 +28,6 @@ class Solution:
 
                 if len(arr) == 1:
                     return arr[0]
-                # maximum_from_subs = 0
-                # start = 0
-                # for end in negative_indexes:
-                #     m = helper(arr[start:end])
-                #     if m > maximum_from_subs:
-                #         maximum_from_subs = m
-                #     start = end + 1
-
-                # m = helper(arr[start:len(arr)])
-                # if m > maximum_from_subs:
-                #     maximum_from_subs = m
 
                 l = 0
                 r = len(arr) - 1
@@ -60,8 +45,6 @@ class Solution:
                 left = helper(arr[0: r])
                 right = helper(arr[l + 1: len(arr)])
                 return max(left, right)
-
-                # return maximum_from_subs
                 
             elif zero_count > 0:
                 max_from_subs = 0
@@ -76,5 +59,4 @@ class Solution:
                 if m > max_from_subs:
                     max_from_subs = m
                 return max_from_subs
-            print(zero_count, zero_indexes, negative_count)
         return helper(nums)
