@@ -50,7 +50,6 @@ class Solution:
                 max_from_subs = 0
                 start = 0
                 for end in zero_indexes:
-                    print(start,end)
                     m = helper(arr[start: end])
                     if m > max_from_subs:
                         max_from_subs = m
