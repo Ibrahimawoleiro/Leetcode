@@ -3,6 +3,7 @@ class Solution:
         
 
         def helper(arr):
+            
             if len(arr) == 0:
                 return 0
 
