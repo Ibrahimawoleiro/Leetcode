@@ -5,7 +5,6 @@ class Solution:
 
         def lower(start , end, pos):
             while(start <= end):
-                print(start, end)
                 #Looking if the number exist in the array
                 if pos == -1:
                     mid = (start + end) // 2
