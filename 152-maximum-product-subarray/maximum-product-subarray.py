@@ -3,10 +3,11 @@ class Solution:
         
 
         def helper(arr):
-            
+            #If the length of the arr is 0, return 0
             if len(arr) == 0:
                 return 0
 
+            #Count the length of the zeroes and negative values in the array
             zero_count = 0
             zero_indexes = []
             negative_count = 0
@@ -19,17 +20,23 @@ class Solution:
                 if arr[index] < 0:
                     negative_count += 1
                     negative_indexes.append(index)
+            #If there is no zeroes and no negative numbers
+            #Just loop through the array and return the multiplication of everything
             if zero_count == 0 and negative_count % 2 == 0:
                 curr = 1
                 for num in arr:
                     curr *= num
                 return curr
-            
-            elif zero_count == 0 and negative_count % 2 == 1:
 
+            #If there is no zeroes but there are negatives
+            elif zero_count == 0 and negative_count % 2 == 1:
+                #If there is only one negative number and the number is the only one in array
+                #return the number
                 if len(arr) == 1:
                     return arr[0]
-
+                #Get the maximum of the multiplication without the first negative
+                #And without the last negative
+                #Return the maximum of the two sub arrays
                 l = 0
                 r = len(arr) - 1
 
@@ -46,7 +53,8 @@ class Solution:
                 left = helper(arr[0: r])
                 right = helper(arr[l + 1: len(arr)])
                 return max(left, right)
-                
+            #If there is a zero:
+            #Return the maximum of multiplications excluding zeroes
             elif zero_count > 0:
                 max_from_subs = 0
                 start = 0
