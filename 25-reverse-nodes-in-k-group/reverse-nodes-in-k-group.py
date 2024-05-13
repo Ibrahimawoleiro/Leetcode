@@ -11,7 +11,6 @@ class Solution:
             prev = None
             curr = node
             while(node):
-                print(node.val)
                 next_ = node.next
                 node.next = prev
                 prev = node
