@@ -34,7 +34,6 @@ class Solution:
                 return back_up
             
             next_back_up = node.next
-            print(next_back_up)
             node.next = None
 
             head_of_reversed = reverse(back_up)
