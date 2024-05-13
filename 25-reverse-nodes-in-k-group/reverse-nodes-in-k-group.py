@@ -23,7 +23,6 @@ class Solution:
         def k_reverse(node):
             if not node:
                 return None
-            
             back_up = node
             r = k - 1
             while(r != 0 and node):
@@ -34,7 +33,6 @@ class Solution:
             
             next_back_up = node.next
             node.next = None
-
             head_of_reversed = reverse(back_up)
             back_up.next = k_reverse(next_back_up)
             return head_of_reversed
