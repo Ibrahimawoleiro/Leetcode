@@ -22,8 +22,6 @@ class Solution:
                 else:
                     dic[node.val].append(node)
                 node = next_
-        
-        print(dic)
 
         ans = ListNode()
         itr = ans
@@ -33,8 +31,6 @@ class Solution:
                 itr.next = dic[curr].pop()
                 itr = itr.next
             del dic[curr]
-
-        print(ans.val)
 
         return ans.next
             
