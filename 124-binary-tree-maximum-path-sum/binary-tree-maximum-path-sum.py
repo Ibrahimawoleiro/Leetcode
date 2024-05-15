@@ -26,7 +26,6 @@ class Solution:
         
         result = max(curr, max(max(curr_only, l_and_curr), r_and_curr))
         ans[0] = max(result, ans[0])
-        print(result, ans[0])
         return max(max(l_and_curr, r_and_curr),curr_only)
         # heapq.heappush(heap, min(min(-curr, -node.val),-(node.val + max(l, r))))
         # return max(node.val + max(l, r), node.val)
