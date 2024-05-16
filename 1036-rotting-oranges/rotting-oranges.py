@@ -17,10 +17,11 @@ class Solution:
         while q:
             curr = q.get()
             if curr == None:
-                m += 1
+                
                 if q.empty():
                     break
                 else:
+                    m += 1
                     q.put(None)
                     continue
 
@@ -41,4 +42,4 @@ class Solution:
                 grid[curr[0]][curr[1] + 1] = 2
                 q.put( (curr[0], curr[1] + 1) )
 
-        return m - 1 if s == g else -1
+        return m  if s == g else -1
