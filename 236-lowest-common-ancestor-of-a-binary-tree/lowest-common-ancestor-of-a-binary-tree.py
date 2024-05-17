@@ -19,9 +19,6 @@ class Solution:
         l = self.helper(root.left, p, q, dic)
 
         r = self.helper(root.right, p, q, dic)
-        print(root.val)
-        print(l, root.val)
-        print(r, root.val)
         if l[2][1]:
             return l
         if r[2][1]:
@@ -29,11 +26,9 @@ class Solution:
         if l[0] and r[1] or l[1] and r[0]:
             return [True,True,[root,True]]
         if p.val == root.val:
-            print(p.val,'xzcvghbjkl;kjhcxvbn')
             if l[1]:
                 return [True, True, [root, True]]
             elif r[1]:
-                print("yujlkhgfcgjkcvjkliuhguyhuhuihuhiuhuiuihijkjikjnjijni")
                 return [True, True, [root, True]]
         elif q.val == root.val:
             if l[0]:
@@ -41,7 +36,5 @@ class Solution:
             elif r[0]:
                 return [True, True, [root, True]]
         
-        print(l[0], r[0], r[1], l[1])
-        print( True if root.val == p.val else False, True if root.val == q.val else False)
         return [ True if root.val == p.val or l[0] or r[0] else False, True if root.val == q.val or l[1] or r[1] else False, [None, False]]
 
