@@ -42,5 +42,4 @@ class Solution:
                 dic[curr.right] = curr
 
         helper(b, 0)
-        print(min_time)
         return min_time[0]
