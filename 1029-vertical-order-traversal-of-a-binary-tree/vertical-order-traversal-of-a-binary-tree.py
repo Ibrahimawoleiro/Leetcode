@@ -13,9 +13,6 @@ class Solution:
         ans = []
         self.helper(root, column_dictionary, column_rank, root_position, rank_values)
 
-        print(column_dictionary)
-        print(rank_values)
-
         while(column_rank):
             column_result = []
             c = heapq.heappop(column_rank)
@@ -24,10 +21,6 @@ class Solution:
                 while rank_values[(r,c)]:
                     column_result.append(heapq.heappop(rank_values[(r,c)]))
             ans.append(column_result)
-
-        print(column_dictionary)
-        print(rank_values)
-        print(ans)
         return ans
     #root -> current node
     #r_p -> root position
