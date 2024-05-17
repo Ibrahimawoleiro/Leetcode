@@ -17,7 +17,6 @@ class Solution:
         ans = []
         visited = set()
         def helper(curr, d):
-            print(curr.val)
             if d > k or curr in visited:
                 return 
             if d == k:
