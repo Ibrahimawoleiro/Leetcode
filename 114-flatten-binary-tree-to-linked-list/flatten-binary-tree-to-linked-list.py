@@ -18,14 +18,11 @@ class Solution:
             curr.right = helper(curr.left)
             curr.left = None
             h = curr
-            print(h.val)
             while(h.right):
                 h = h.right
-            print(h.val,'ghjsdklsssdd')
             h.right = helper(temp)
             return curr
 
         helper(root)
-        print(root.left)
 
         
