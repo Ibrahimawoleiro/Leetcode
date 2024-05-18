@@ -23,10 +23,7 @@ class Solution:
             if not curr:
                 return
             h(curr.right)
-            print(curr.val,ans)
             curr.val = ans.pop()
-            
-            print(curr.val,ans)
             h(curr.left)
         h(root)
 
