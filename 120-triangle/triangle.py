@@ -2,7 +2,7 @@ class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         store = {}
         def helper(r,i, store):
-            if r >= len(triangle) or i >= len(triangle[r]):
+            if r >= len(triangle):
                 return 0
             if (r, i) in store:
                 return store[(r, i)]
