@@ -9,9 +9,7 @@ class Solution:
             curr = triangle[r][i]
             min_path = curr + min(helper(r+1, i,store), helper(r+1, i+1,store))
             store[(r, i)] = min_path
-
             return store[(r, i)]
-
         ans = helper(0, 0, store)
         return ans
 
