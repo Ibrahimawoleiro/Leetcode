@@ -20,6 +20,4 @@ class Solution:
             return curr
         
         ans = helper((0,0), store)
-        print(ans)
-        print(store)
         return ans
