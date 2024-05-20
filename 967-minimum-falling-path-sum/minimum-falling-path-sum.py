@@ -13,12 +13,9 @@ class Solution:
                 return matrix[c[0]][c[1]]
             curr = matrix[c[0]][c[1]] + min(min(helper((c[0] + 1, c[1] + 1), store), helper((c[0] + 1, c[1]),store))         , helper((c[0] + 1, c[1] - 1), store) )
             store[c] = curr
-            print(c, curr)
             return curr
 
         for c_i in range(len(matrix[0])):
             curr = helper((0, c_i), store)
             min_sum = min(curr, min_sum)
-        print(min_sum)
-        print(store)
         return min_sum
