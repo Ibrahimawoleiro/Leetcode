@@ -1,7 +1,5 @@
 class Solution:
     def maxLengthBetweenEqualCharacters(self, s: str) -> int:
-        # s = {letter: -1 for letter in string.ascii_lowercase}
-        # e = {letter: -1 for letter in string.ascii_lowercase}
         start = {}
         end = {}
         for i in range(len(s)):
