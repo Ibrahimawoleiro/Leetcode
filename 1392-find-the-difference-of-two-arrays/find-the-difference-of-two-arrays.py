@@ -1,6 +1,6 @@
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        a_b= set(nums1)
+        a_b = set(nums1)
         b_b = set(nums2)
         ans = []
 
