@@ -10,7 +10,6 @@ class Solution:
                 j+=1
                 continue
             if prices[j] > prices[j - 1]:
-                print(prices[j], prices[i])
                 if j == len(prices) - 1 and prices[j - 1] - prices[i] < prices[j] - prices[i]:
                     profit += (prices[j] - prices[i])
                     j+=1
