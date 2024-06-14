@@ -21,8 +21,6 @@ class Solution:
                     count += 1
                 if total > 0 and i == len(weights) - 1:
                     count += 1
-            print(count)
-            print(mid)
             if not ReachEnd:
                 l = mid + 1
                 continue
