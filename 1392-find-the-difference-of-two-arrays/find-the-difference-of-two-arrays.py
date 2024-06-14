@@ -11,9 +11,6 @@ class Solution:
         for val in nums2:
             if val in a_b:
                 a_b.remove(val)
-
-        print(a_b)
-        print(b_b)
         curr = []
         while a_b:
             curr.append(a_b.pop())
@@ -22,7 +19,5 @@ class Solution:
         while b_b:
             curr.append(b_b.pop())
         ans.append(curr.copy())
-
-        print(ans)
 
         return ans
