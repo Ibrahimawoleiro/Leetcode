@@ -2,7 +2,7 @@ class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         l = 1
         h = sum(weights)
-        ans = 10 ** 10
+        ans = float('inf')
         while l <= h:
             mid = (l + h) // 2
             total = 0
