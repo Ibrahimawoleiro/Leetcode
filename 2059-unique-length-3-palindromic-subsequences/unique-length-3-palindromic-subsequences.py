@@ -29,9 +29,7 @@ class Solution:
                     if curr not in seen:
                         seen.add(curr)
                         count += 1
-                    
-
-            
+                        
             if current in storeA:
                 storeA[current] += 1
             else:
