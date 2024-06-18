@@ -30,9 +30,7 @@ class Solution:
                     q.put((r, c + 1))
                     seen.add((r, c + 1))
             else:
-                # print(seen)
                 if not q.empty():
                     d += 1
-                    # print(d)
                     q.put(None)
         return ans
