@@ -11,8 +11,6 @@ class Solution:
                     seen.add((r,c))
         q.put(None)
         d = 0
-        print(seen)
-        print(d)
         while(not q.empty()):
             curr = q.get()
             if curr:
