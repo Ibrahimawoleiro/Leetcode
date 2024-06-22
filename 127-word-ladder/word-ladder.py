@@ -20,5 +20,4 @@ class Solution:
                         q.put((result, count+1))
                         store.remove(result)
                 word[i] = l
-        print(count)
         return 0
