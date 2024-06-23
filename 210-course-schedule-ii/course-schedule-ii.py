@@ -37,7 +37,6 @@ class Solution:
             return True
         
         if NoCycle():
-            print('lion')
             def topoSort(V, adj):
                 # Code here
                 indegree = [0 for num in range(V)]
