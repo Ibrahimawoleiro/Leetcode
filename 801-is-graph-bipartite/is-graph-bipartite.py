@@ -2,7 +2,6 @@ class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         
         color = [-1 for num in range(len(graph))]
-        print(color)
 
         def dfs(n, c):
             if color[n] > -1:
