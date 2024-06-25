@@ -16,7 +16,6 @@ class Solution:
         ans = -1
         while heap:
             dist , row, col = heapq.heappop(heap)
-            print(dist, row, col)
             if (row, col) in completed or distance[row][col] < dist:
                 continue
             
