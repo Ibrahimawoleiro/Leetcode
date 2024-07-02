@@ -10,8 +10,6 @@ class Solution:
         row_len += 1
         col_len += 1
 
-        print(row_len, col_len)
-
         parent = [num for num in range(row_len + col_len)]
         size = [1 for num in range(row_len + col_len)]
 
