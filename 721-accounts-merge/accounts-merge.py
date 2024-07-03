@@ -75,10 +75,8 @@ class Solution:
                 answer[ul].append(email)
         
         result = []
-        print(answer)
         for key,val in answer.items():
             answer[key].sort()
-        print(answer)
         for key in owner:
             if key in answer:
                 answer[key].insert(0, owner[key])
