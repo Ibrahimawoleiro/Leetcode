@@ -82,9 +82,6 @@ class Solution:
                             seen.add(n_ul)
                     ans = max(ans, curr_total + 1)
 
-        
-        print(parent)
-        print(size)
         return ans
 
         
