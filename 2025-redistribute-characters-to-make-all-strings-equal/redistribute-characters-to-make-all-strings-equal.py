@@ -9,7 +9,6 @@ class Solution:
                     store[l] += 1
                 else:
                     store[l] = 1
-        print(store)
         for (key, val) in store.items():
             if val % len(words) > 0:
                 return False
