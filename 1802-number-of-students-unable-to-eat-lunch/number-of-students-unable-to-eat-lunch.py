@@ -11,7 +11,6 @@ class Solution:
             else:
                 s += 1
         
-        print(s, c)
         for val in sandwiches:
             if val == 0 and c == 0 or val == 1 and s == 0:
                 return c + s
