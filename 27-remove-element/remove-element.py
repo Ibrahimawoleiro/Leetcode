@@ -14,5 +14,4 @@ class Solution:
                     j -= 1
                 if i < j and nums[i] == val and nums[j] != val:
                     nums[i], nums[j] = nums[j], nums[i]
-                    print(nums)
         return count
