@@ -1,21 +1,16 @@
 class Solution:
     def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
-        if n == 0:
-            return True
         
-        i = 0
+        def no_neighbor(curr):
+            if curr < 0 or curr >= len(flowerbed):
+                return True
+            
+            return False if  flowerbed[curr] == 1 else True
 
-        while(i<len(flowerbed)):
-            left = False
-            right = False
-            if flowerbed[i] == 0:
-                if i - 1 < 0 or flowerbed[i - 1] == 0:
-                    left = True
-                if i + 1 >= len(flowerbed) or flowerbed[i + 1] == 0:
-                    right = True
-                if left and right:
-                    flowerbed[i] = 1
-                    n -= 1
-                    if n == 0:
-                        return True
-            i+=1
+        
+        for index in range(len(flowerbed)):
+            if no_neighbor(index - 1) and no_neighbor(index + 1) and flowerbed[index] == 0:
+                n -= 1
+                flowerbed[index] = 1
+        return n <= 0
+                
