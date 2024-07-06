@@ -1,6 +1,5 @@
 class Solution:
     def leastBricks(self, wall: List[List[int]]) -> int:
-        heap = []
         store = {}
         for r_i in range(len(wall)):
             total = 0
