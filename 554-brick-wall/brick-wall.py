@@ -11,7 +11,6 @@ class Solution:
                 else:
                     store[total] += 1
         top = 0
-        print(top, store)
         for val in store.values():
             if val > top:
                 top = val
