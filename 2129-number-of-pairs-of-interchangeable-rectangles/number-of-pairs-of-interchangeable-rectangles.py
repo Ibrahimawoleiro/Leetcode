@@ -11,6 +11,6 @@ class Solution:
 
         for v in store.values():
             if v > 1:
-                ans += (v * (v-1))/2
+                ans += (v * (v-1)) //2
 
-        return int(ans)
+        return ans
