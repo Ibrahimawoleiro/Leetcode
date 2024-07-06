@@ -5,7 +5,6 @@ class Solution:
         for r_i in range(len(wall)):
             total = 0
             for c_i in range(len(wall[r_i]) -  1):
-                print(r_i, c_i)
                 total += wall[r_i][c_i]
                 if total not in store:
                     store[total] = 1
