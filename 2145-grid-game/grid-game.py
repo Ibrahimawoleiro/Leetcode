@@ -27,7 +27,3 @@ class Solution:
             min_second_robot_score = min(min_second_robot_score, second_robot_score)
 
         return min_second_robot_score
-
-# Example usage:
-solution = Solution()
-print(solution.gridGame([[2,5,4],[1,5,1]]))  # Example input
