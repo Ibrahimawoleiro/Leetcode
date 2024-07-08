@@ -7,7 +7,6 @@ class Solution:
                 q.put((dominoes[index], index))
         q.put(None)
         c = list(dominoes)
-        #Indexes to be changed and what to
         arr = []
         while not q.empty():
 
@@ -27,7 +26,6 @@ class Solution:
             else:
                 action = curr[0]
                 position = curr[1]
-
                 if action == 'L':
                     if position == 0:
                         continue
