@@ -35,6 +35,4 @@ class Solution:
                     else:
                         store[(r,c)] = 0
                         fill[(r,c)] = 0
-        print(fill)
-        print(store)
         return fill[(query_row, query_glass)]
