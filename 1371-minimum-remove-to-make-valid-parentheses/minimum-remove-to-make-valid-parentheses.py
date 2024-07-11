@@ -19,7 +19,6 @@ class Solution:
         
         o = 0
         c = 0
-        print(closing_count)
         for char in helper:
             if char == '(' and o < closing_count or char == ')' and c < closing_count:
                 ans += char
