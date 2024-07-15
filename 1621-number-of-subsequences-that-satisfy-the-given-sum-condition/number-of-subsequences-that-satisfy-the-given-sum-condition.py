@@ -25,6 +25,6 @@ class Solution:
                     low = mid + 1
 
             
-            ans += 2 ** (i - index)
+            ans += 2 ** (i - index) % (10 ** 9 + 7)
             
         return ans % (10 ** 9 + 7)
