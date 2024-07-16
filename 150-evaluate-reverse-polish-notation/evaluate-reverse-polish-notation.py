@@ -27,7 +27,7 @@ class Solution:
                         curr = floor(curr)
                     else:
                         curr = ceil(curr)
-                    stack.append( curr)
+                    stack.append( str(curr))
             else:
                 stack.append(val)
 
