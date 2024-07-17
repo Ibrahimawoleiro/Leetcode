@@ -5,7 +5,6 @@ class Solution:
             if len(curr) == 2*n:
                 ans.append(curr[:])
                 return 
-            
             if o > c:
                 #Two options: Add ( or add )
                 if o < n:
