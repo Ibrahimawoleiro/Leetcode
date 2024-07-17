@@ -19,13 +19,9 @@ class Solution:
                 while stack and stack[-1].isdigit():
                     count+=stack.pop()
                 count.reverse()
-                print(count)
                 count = int(''.join(count))
                 word = ''.join(helper_stack)
-                print(count, curr, word)
-
                 for val in range(count - 1):
                     curr += word
-                print(curr, 'usjeklrsdnjfd')
                 stack.append(curr)
         return ''.join(stack)
