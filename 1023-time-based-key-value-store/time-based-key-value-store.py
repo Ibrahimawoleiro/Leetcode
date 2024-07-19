@@ -24,15 +24,6 @@ class TimeMap:
                 right = mid - 1
             else:
                 left = mid + 1
-        # if left < len(curr) and right >= 0:
-        #     if curr[left][0] < curr[right][0]:
-        #         return curr[left][1]
-            
-        #     return curr[right][1]
-        
-        # if left < len(curr):
-        #     if curr[left][0] < timestamp:
-        #         return curr[left][1]
         
         if right >= 0 and curr[right][0] < timestamp:
             return curr[right][1]
