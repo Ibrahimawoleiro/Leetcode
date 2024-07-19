@@ -19,8 +19,6 @@ class Solution:
                     k += 2
                 else:
                     k += 1
-            print('huiojlfewsd')
-            print(mid, m, 'count', count)
             if count >= p:
                 if mid < m:
                     m = mid
