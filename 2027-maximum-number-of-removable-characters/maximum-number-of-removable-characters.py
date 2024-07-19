@@ -14,7 +14,6 @@ class Solution:
 
             mid = (left + right) // 2
 
-            curr_skip = removable[0 : mid + 1]
             store = set(sorted(removable[0 : mid + 1]))
             
             while s_runner < len(s) and p_runner < len(p):
