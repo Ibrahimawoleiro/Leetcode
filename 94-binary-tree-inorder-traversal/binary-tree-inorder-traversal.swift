@@ -15,16 +15,16 @@
  */
 class Solution {
     func inorderTraversal(_ root: TreeNode?) -> [Int] {
-        var result : [Int] = [Int]();
-        self.recursive(root: root, &result);
-        return result;
-    }
+        func inorder(root curr: TreeNode?, array arr: inout [Int]) -> [Int]{
+            guard let curr = curr else {return []}
 
-    func recursive(root curr: TreeNode?, _ ans: inout [Int]) -> Void{
-        guard let curr = curr else {return }
-        print("u");
-        self.recursive(root: curr.left, &ans)
-        ans.append(curr.val);
-        self.recursive(root: curr.right, &ans)
+            inorder(root : curr.left, array: &arr)
+            arr.append(curr.val)
+            inorder(root: curr.right,array: &arr)
+            return arr
+        }
+        var ans: [Int] = [Int]()
+
+        return inorder(root: root, array: &ans)
     }
 }
