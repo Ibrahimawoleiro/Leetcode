@@ -30,8 +30,6 @@ class Solution {
             fast = fast?.next;
             slow = slow?.next;
         }
-        print(left?.val);
-        print(slow?.val);
         if let left = left, let right = slow{
             var temp: Int = left.val;
             left.val = right.val;
