@@ -17,8 +17,6 @@ class Solution {
 
         for index in stride(from: 0, to: b + 1, by: 1){
             head = head?.next;
-            print(head?.val)
-            print(index)
             if index == a - 2{
                 if let head = head{
                     left = head;
@@ -38,9 +36,6 @@ class Solution {
         if a == b{
             right = left?.next?.next
         }
-
-        print(left?.val)
-        print(right?.val)
         
         var curr: ListNode? = list2;
 
@@ -48,7 +43,6 @@ class Solution {
             curr = curr?.next;
         }
 
-        print(curr?.val)
         left?.next = list2!
         curr?.next = right
 
