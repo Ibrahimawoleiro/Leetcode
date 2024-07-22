@@ -43,13 +43,10 @@ class Solution {
         var maximum : Int = 0;
         fast = head;
 
-        print(slow?.val);
-        print(fast?.val);
         while fast != nil{
             
             guard let slow_node = slow else {break}
             guard let fast_node = fast else {break}
-            print("uhiesfdk")
             maximum = max(maximum, (slow_node.val + fast_node.val))
             fast = fast?.next;
             slow = slow?.next;
