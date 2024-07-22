@@ -31,7 +31,6 @@ class Solution:
 
             return valid_time[curr]
         
-        print(valid_time)
         dfs(0,time)[0]
         return valid_time[0][0] - 1
 
