@@ -15,19 +15,24 @@
  */
 class Solution {
     func isBalanced(_ root: TreeNode?) -> Bool {
-        return self.recursive(root).1;
-    }
+        func balanced(current node: TreeNode?) -> (Int, Bool){
+            guard let curr = node else {return (0, true)};
+            var left: (Int, Bool) = balanced(current: curr.left);
+            if !left.1{
+                return (0, false);
+            }
+            var right: (Int, Bool) = balanced(current: curr.right);
+            if !right.1{
+                return (0, false);
+            }
 
-    func recursive(_ root: TreeNode?) -> (Int, Bool){
-        guard let root = root else {return (0, true)};
-        var left_result : (Int, Bool) = self.recursive(root.left);
-        if left_result.1 == false{
-            return (0, false)
+            if abs(left.0 - right.0) > 1{
+                return (0, false);
+            }
+
+            return (max(left.0, right.0) + 1, true)
         }
-        var right_result : (Int, Bool) = self.recursive(root.right);
-        if right_result.1 == false{
-            return (0, false)
-        }
-        return ( max(left_result.0 + 1, right_result.0 + 1), abs(left_result.0 - right_result.0) <= 1 );
+
+        return balanced(current: root).1;
     }
 }
