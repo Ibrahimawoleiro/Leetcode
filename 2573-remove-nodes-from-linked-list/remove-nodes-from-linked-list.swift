@@ -37,7 +37,6 @@ class Solution {
         var ans: ListNode? = ListNode();
         var iterator: ListNode? = ans;
         for num in stack{
-            print(num)
             var curr: ListNode? = ListNode(num);
             if let itr = iterator{
                 itr.next = curr;
