@@ -15,23 +15,21 @@
  */
 class Solution {
     func isSameTree(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
-        return self.recursive(p, q);
-    }
-
-    func recursive(_ left: TreeNode?, _ right: TreeNode?) -> Bool{
-        if let left = left , let right = right{
-
-            if left.val != right.val{
-                return false
+        
+        guard let p = p, let q = q else {
+            if let p = p{
+                return false;
             }
-            return self.recursive(left.left, right.left) && self.recursive(left.right, right.right);
-        }else if let left = left{
-            return false;
-        }else if let right = right{
-            return false;
-        }
-        else{
+            if let q = q {
+                return false;
+            }
             return true;
         }
+
+        if p.val != q.val{
+            return false;
+        }
+
+        return self.isSameTree(p.left, q.left) && self.isSameTree(p.right, q.right);
     }
 }
