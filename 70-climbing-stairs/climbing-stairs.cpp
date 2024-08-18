@@ -46,7 +46,6 @@ public:
     // OptimizedTabulation function
     // TC -> O(N)
     // SC -> O(1)
-
     int opt_tabulation(int n){
         int prev = 1;
         int curr = 1;
