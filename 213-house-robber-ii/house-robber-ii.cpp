@@ -32,22 +32,40 @@ public:
     //     return dp[index];
     // }
 
-    int tabulation(vector<int>& nums){
-        vector<int> dp(nums.size(), -1);
-        dp[0] = nums[0];
+    // TC -> O(N)
+    // SC -> O(N)
+    // int tabulation(vector<int>& nums){
+    //     vector<int> dp(nums.size(), -1);
+    //     dp[0] = nums[0];
+
+    //     for(int i = 1; i < nums.size(); i++){
+
+    //         int not_take = dp[i - 1];
+    //         int take = nums[i];
+    //         if (i - 2 >= 0){
+    //             take = nums[i] + dp[i - 2];
+    //         }
+
+    //         dp[i] = max(take, not_take);
+    //     }
+
+    //     return dp[nums.size() - 1];
+    // }
+
+    // TC -> O(N)
+    // SC -> O(1)
+    int optimizedTabulation(vector<int> nums){
+        int prev = 0;
+        int curr = nums[0];
 
         for(int i = 1; i < nums.size(); i++){
+            int not_take = curr;
+            int take = nums[i] + prev;
 
-            int not_take = dp[i - 1];
-            int take = nums[i];
-            if (i - 2 >= 0){
-                take = nums[i] + dp[i - 2];
-            }
-
-            dp[i] = max(take, not_take);
+            prev = curr;
+            curr = max(take, not_take);
         }
-
-        return dp[nums.size() - 1];
+        return curr;
     }
     int rob(vector<int>& nums) {
         if (nums.size() == 1){
@@ -55,6 +73,6 @@ public:
         }
         vector<int> omit_f(nums.begin()+1, nums.end());
         vector<int> omit_l(nums.begin(), nums.begin() + nums.size() - 1);
-        return max(tabulation(omit_f), tabulation(omit_l));
+        return max(optimizedTabulation(omit_f), optimizedTabulation(omit_l));
     }
 };
