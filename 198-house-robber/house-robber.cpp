@@ -27,25 +27,46 @@ public:
     //     return dp[index];
     // }
 
-    //
-    int tabulation(vector<int> nums){
+    // // TC -> O(N)
+    // // SC -> O(N)
+    // int tabulation(vector<int> nums){
+    //     int size = nums.size();
+    //     vector<int> dp(size, -1);
+    //     dp[0] = nums[0];
+    //     for (int i = 1; i<= size - 1; i++){
+    //         int not_pick = dp[i - 1];
+    //         int pick = nums[i];
+    //         if (i - 2 >= 0){
+    //             pick = nums[i] + dp[i - 2];
+    //         }
+
+    //         dp[i] = max(not_pick, pick);
+    //     }
+
+    //     return dp[size - 1];
+    // }
+
+    // TC -> O(N)
+    // SC -> O(1)
+    int optimizedTabulation(vector<int> nums){
         int size = nums.size();
-        vector<int> dp(size, -1);
-        dp[0] = nums[0];
-        for (int i = 1; i<= size - 1; i++){
-            int not_pick = dp[i - 1];
-            int pick = nums[i];
-            if (i - 2 >= 0){
-                pick = nums[i] + dp[i - 2];
-            }
 
-            dp[i] = max(not_pick, pick);
+        int prev = 0;
+        int curr = nums[0];
+
+        for (int i = 1; i < size; i++){
+            int not_take = curr;
+            int take = nums[i] + prev;
+            
+            int next = max(take, not_take);
+
+            prev = curr;
+            curr = next;
         }
-
-        return dp[size - 1];
+        return curr;
     }
 
     int rob(vector<int>& nums) {
-        return tabulation(nums);
+        return optimizedTabulation(nums);
     }
 };
