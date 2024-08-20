@@ -57,11 +57,9 @@ public:
     int optimizedTabulation(vector<int> nums){
         int prev = 0;
         int curr = nums[0];
-
         for(int i = 1; i < nums.size(); i++){
             int not_take = curr;
             int take = nums[i] + prev;
-
             prev = curr;
             curr = max(take, not_take);
         }
