@@ -64,7 +64,7 @@ public:
 
     int optimizedTabulation(int m, int n){
         vector<vector<int>> prev(1, vector<int>(n, -1));  
-        vector<vector<int>> curr(1, vector<int>(n, 0));
+        vector<vector<int>> curr(1, vector<int>(n, -1));
 
         for (int r = 0; r < m; r++){
             for (int c = 0; c < n; c ++){
