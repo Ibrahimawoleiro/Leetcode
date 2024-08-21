@@ -56,6 +56,8 @@ public:
     //     return dp[grid.size() - 1][grid[0].size() - 1];
     // }
 
+    // TC -> O(N * M)
+    // SC -> O(M)
     int optimizedTabulation(vector<vector<int>>& grid){
         vector<int> prev(grid[0].size(), -1);
         vector<int> curr(grid[0].size(), -1);
