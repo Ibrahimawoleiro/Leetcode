@@ -38,32 +38,66 @@ public:
     //     return dp[r][c];
     // }
 
-    int tabulation(vector<vector<int>>& grid){
-        vector<vector<int>> dp(grid.size(), vector<int>(grid[0].size(), -1));
-        for(int r = 0; r < grid.size(); r++){
-            for(int c = 0; c < grid[0].size(); c++){
+    // // TC -> O(N * M)
+    // // SC -> O(N * M)
+    // int tabulation(vector<vector<int>>& grid){
+    //     vector<vector<int>> dp(grid.size(), vector<int>(grid[0].size(), -1));
+    //     for(int r = 0; r < grid.size(); r++){
+    //         for(int c = 0; c < grid[0].size(); c++){
+    //             if (grid[r][c] == 1){
+    //                 dp[r][c] = 0;
+    //                 continue;
+    //             }
+    //             if (r == 0 && c == 0){
+    //                 dp[r][c] = 1;
+    //                 continue;
+    //             }
+    //             int left = 0;
+    //             int up = 0;
+    //             if (c - 1 >= 0){
+    //                 left = dp[r][c - 1];
+    //             }
+    //             if (r - 1 >= 0){
+    //                 up = dp[r - 1][c];
+    //             }
+    //             dp[r][c] = left + up;
+    //         }
+    //     }
+    //     return dp[grid.size() - 1][grid[0].size() - 1];
+    // }
+
+    // TC -> O(N * M)
+    // SC -> O(N)
+    int optimizedTabulation(vector<vector<int>>& grid){
+        vector<vector<int>> prev(1, vector<int>(grid[0].size(), -1));
+        vector<vector<int>> curr(1, vector<int>(grid[0].size(), -1));
+
+        for (int r = 0; r < grid.size(); r ++){
+            for (int c = 0; c < grid[0].size(); c ++){
                 if (grid[r][c] == 1){
-                    dp[r][c] = 0;
+                    curr[0][c] = 0;
                     continue;
                 }
                 if (r == 0 && c == 0){
-                    dp[r][c] = 1;
+                    curr[0][c] = 1;
                     continue;
                 }
                 int left = 0;
                 int up = 0;
                 if (c - 1 >= 0){
-                    left = dp[r][c - 1];
+                    left = curr[0][c - 1];
                 }
                 if (r - 1 >= 0){
-                    up = dp[r - 1][c];
+                    up = prev[0][c];
                 }
-                dp[r][c] = left + up;
+                curr[0][c] = left + up;
             }
+            prev = curr;
+            curr = vector<vector<int>>(1, vector<int>(grid[0].size(), -1));
         }
-        return dp[grid.size() - 1][grid[0].size() - 1];
+        return prev[0][grid[0].size() - 1];
     }
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
-        return tabulation(obstacleGrid);
+        return optimizedTabulation(obstacleGrid);
     }
 };
