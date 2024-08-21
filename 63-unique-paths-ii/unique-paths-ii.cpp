@@ -33,15 +33,11 @@ public:
         if (dp[r][c] != -1){
             return dp[r][c];
         }
-
         // recursive case
         int left = memoized(grid, dp, r, c - 1);
         int up = memoized(grid, dp, r - 1, c);
-
         dp[r][c] = left + up;
-
         return dp[r][c];
-
     }
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         vector<vector<int>> dp(obstacleGrid.size(), vector<int>(obstacleGrid[0].size(), -1));
