@@ -14,25 +14,48 @@ public:
     //     return min(left, up);
     // }
 
-    // TC -> O(N * M * 2)
-    // SC -> O(N * M + (N + M))
-    int memoized(vector<vector<int>>& grid, vector<vector<int>>& dp, int r, int c){
-        if (r < 0 || c < 0){
-            return 100000000;
-        }
-        if (r == 0 and c == 0){
-            return grid[r][c];
-        }
-        if (dp[r][c] != -1){
-            return dp[r][c];
-        }
-        int left = grid[r][c] + memoized(grid, dp , r, c - 1);
-        int up = grid[r][c] + memoized(grid, dp , r - 1 , c);
-        dp[r][c] = min(left , up);
-        return dp[r][c];
-    }
-    int minPathSum(vector<vector<int>>& grid) {
+    // // TC -> O(N * M * 2)
+    // // SC -> O(N * M + (N + M))
+    // int memoized(vector<vector<int>>& grid, vector<vector<int>>& dp, int r, int c){
+    //     if (r < 0 || c < 0){
+    //         return 100000000;
+    //     }
+    //     if (r == 0 and c == 0){
+    //         return grid[r][c];
+    //     }
+    //     if (dp[r][c] != -1){
+    //         return dp[r][c];
+    //     }
+    //     int left = grid[r][c] + memoized(grid, dp , r, c - 1);
+    //     int up = grid[r][c] + memoized(grid, dp , r - 1 , c);
+    //     dp[r][c] = min(left , up);
+    //     return dp[r][c];
+    // }
+
+    int tabulation(vector<vector<int>>& grid){
         vector<vector<int>> dp(grid.size(), vector<int>(grid[0].size(), -1));
-        return memoized(grid,dp, grid.size() - 1, grid[0].size() - 1);
+        for (int r = 0; r < grid.size(); r++){
+            for (int c = 0; c < grid[0].size(); c++){
+                if (r == 0 && c == 0){
+                    dp[r][c] = grid[0][0];
+                    continue;
+                }
+                int left = 100000000;
+                int up = 1000000000;
+                if (c - 1 >= 0){
+                    left = dp[r][c - 1];
+                }
+                if (r - 1 >= 0){
+                    up = dp[r - 1][c];
+                }
+                dp[r][c] = grid[r][c] + min(up, left);
+            }
+        }
+        return dp[grid.size() - 1][grid[0].size() - 1];
+    }
+    
+    int minPathSum(vector<vector<int>>& grid) {
+        
+        return tabulation(grid);
     }
 };
