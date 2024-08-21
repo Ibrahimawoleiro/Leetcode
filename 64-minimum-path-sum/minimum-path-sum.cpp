@@ -14,20 +14,18 @@ public:
     //     return min(left, up);
     // }
 
-
+    // TC -> O(N * M * 2)
+    // SC -> O(N * M + (N + M))
     int memoized(vector<vector<int>>& grid, vector<vector<int>>& dp, int r, int c){
         if (r < 0 || c < 0){
             return 100000000;
         }
-
         if (r == 0 and c == 0){
             return grid[r][c];
         }
-
         if (dp[r][c] != -1){
             return dp[r][c];
         }
-
         int left = grid[r][c] + memoized(grid, dp , r, c - 1);
         int up = grid[r][c] + memoized(grid, dp , r - 1 , c);
         dp[r][c] = min(left , up);
