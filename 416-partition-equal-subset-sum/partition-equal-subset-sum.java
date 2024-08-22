@@ -12,13 +12,13 @@ class Solution {
     //             return false;
     //         }
     //     }
-
     //     boolean take = recursion(nums,index - 1, remainder - nums[index]);
     //     boolean not_take = recursion(nums, index - 1, remainder);
-
     //     return take || not_take;
     // }
 
+    // TC -> O(N * TOTAL * 2)
+    // SC -> O(N * TOTAL + N)
     public boolean memoized(int[] nums, Boolean[][] dp, int index, int remainder){
         if (remainder < 0){
             return false;
@@ -33,12 +33,23 @@ class Solution {
         if(dp[index][remainder] != null){
             return dp[index][remainder];
         }
-
         boolean take = memoized(nums, dp, index - 1, remainder - nums[index]);
         boolean not_take = memoized(nums,dp, index - 1, remainder);
-
         dp[index][remainder] = take || not_take;
         return dp[index][remainder];
+    }
+
+    boolean tabulation(int[] nums){
+        int total = 0;
+        for(int num : nums){
+            total += num;
+        }
+        if (total % 2 == 1){
+            return false;
+        }
+        int arr_size = nums.length;
+        Boolean[][] dp = new Boolean[arr_size][total];
+        return false;
     }
 
     public boolean canPartition(int[] nums) {
