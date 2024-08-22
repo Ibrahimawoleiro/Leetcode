@@ -65,6 +65,8 @@ public:
     //     return min_path;
     // }
 
+    // TC -> O(N * M)
+    // SC -> O(M)
     int optimizedTabulation(vector<vector<int>>& triangle){
         int row_size = triangle.size();
         int col_size = triangle[triangle.size() - 1].size();
