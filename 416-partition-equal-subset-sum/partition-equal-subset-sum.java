@@ -39,6 +39,8 @@ class Solution {
         return dp[index][remainder];
     }
 
+    // TC -> O(N * TOTAL * 2)
+    // SC -> O(N * TOTAL)
     boolean tabulation(int[] nums){
         int total = 0;
         for(int num : nums){
@@ -48,34 +50,29 @@ class Solution {
             return false;
         }
         int arr_size = nums.length;
-        Boolean[][] dp = new Boolean[arr_size][total + 1];
+        Boolean[][] dp = new Boolean[arr_size][(total / 2) + 1];
         for (int index = 0; index < arr_size; index++){
-            for (int c = 0; c < total + 1; c++){
-                if (index == 0 && nums[index] == c){
-                    dp[index][c] = true;
+            for (int c = 0; c < (total / 2) + 1; c++){
+                if (index == 0){
+                    if (nums[index] == c){
+                        dp[index][c] = true;
+                    }else{
+                        dp[index][c] = false;
+                    }
                     continue;
                 }
                 boolean not_take = dp[index - 1][c];
                 boolean take = nums[index] == c ? true : false; 
                 if (!take && c - nums[index] >= 0){
-                    take = dp[index][c - nums[index]];
+                    take = dp[index - 1][c - nums[index]];
                 }
                 dp[index][c] = take || not_take;
             }
         }
-        return dp[arr_size - 1][total];
+        return dp[arr_size - 1][total / 2];
     }
 
     public boolean canPartition(int[] nums) {
-        int total = 0;
-        for(int num : nums){
-            total += num;
-        }
-        if (total % 2 == 1){
-            return false;
-        }
-        int arr_size = nums.length;
-        Boolean[][] dp = new Boolean[arr_size][total];
-        return memoized(nums, dp, nums.length - 1, total / 2);
+        return tabulation(nums);
     }
 }
