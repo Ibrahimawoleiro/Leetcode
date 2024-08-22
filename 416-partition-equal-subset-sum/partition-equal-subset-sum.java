@@ -62,11 +62,6 @@ class Solution {
         }
         int arr_size = nums.length;
         Boolean[][] dp = new Boolean[arr_size][total];
-        for (int r = 0; r < arr_size; r++){
-            for (int c = 0; c < total; c++){
-                dp[r][c] = null;
-            }
-        }
         return memoized(nums, dp, nums.length - 1, total / 2);
     }
 }
