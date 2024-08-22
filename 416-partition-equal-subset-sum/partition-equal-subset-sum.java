@@ -48,8 +48,22 @@ class Solution {
             return false;
         }
         int arr_size = nums.length;
-        Boolean[][] dp = new Boolean[arr_size][total];
-        return false;
+        Boolean[][] dp = new Boolean[arr_size][total + 1];
+        for (int index = 0; index < arr_size; index++){
+            for (int c = 0; c < total + 1; c++){
+                if (index == 0 && nums[index] == c){
+                    dp[index][c] = true;
+                    continue;
+                }
+                boolean not_take = dp[index - 1][c];
+                boolean take = nums[index] == c ? true : false; 
+                if (!take && c - nums[index] >= 0){
+                    take = dp[index][c - nums[index]];
+                }
+                dp[index][c] = take || not_take;
+            }
+        }
+        return dp[arr_size - 1][total];
     }
 
     public boolean canPartition(int[] nums) {
