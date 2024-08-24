@@ -49,7 +49,6 @@ class Solution:
                         if goal >= coins[index]:
                             take = dp[index][goal - coins[index]]
                         dp[index][goal] = take + not_take
-            print(dp)
             return dp[len(dp) - 1][amount]
         return tabulation()
 
