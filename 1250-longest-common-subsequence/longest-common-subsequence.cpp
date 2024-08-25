@@ -54,6 +54,8 @@ public:
     //     return dp[text1_size][text2_size];
     // }
 
+    // TC -> O(N * M * 2 * 2)
+    // SC -> O(M)
     int optimizedTabulation(int i, int j, string text1, string text2){
         vector<int> prev(text2.size()+1, 0);
         vector<int> curr(text2.size()+1, 0);
