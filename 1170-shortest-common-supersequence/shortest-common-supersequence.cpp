@@ -69,7 +69,7 @@ public:
         return ans;
     }
     string shortestCommonSupersequence(string str1, string str2) {
-        vector<vector<int>> dp(str1.size() + 1, vector<int>(str2.size() + 1, -1));
+        // vector<vector<int>> dp(str1.size() + 1, vector<int>(str2.size() + 1, -1));
         return scs(str1, str2);
     }
 };
