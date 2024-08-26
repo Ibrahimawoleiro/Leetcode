@@ -11,7 +11,7 @@ public:
         }
     }
 
-    string lcs(string s, string t){
+    string scs(string s, string t){
         vector<vector<int>> dp(s.size() + 1, vector<int>(t.size() + 1, -1));
         for(int i = 0; i <= s.size(); i++){
             dp[i][0] = 0;
@@ -28,7 +28,6 @@ public:
                 }
             }
         }
-
         // for(int i = 0; i <= s.size(); i++){
         //     for(int j = 0; j <= t.size(); j++){
         //         cout << dp[i][j] << " ";
@@ -71,6 +70,6 @@ public:
     }
     string shortestCommonSupersequence(string str1, string str2) {
         vector<vector<int>> dp(str1.size() + 1, vector<int>(str2.size() + 1, -1));
-        return lcs(str1, str2);
+        return scs(str1, str2);
     }
 };
