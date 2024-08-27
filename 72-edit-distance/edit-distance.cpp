@@ -35,31 +35,57 @@ public:
     //     }
     //     return dp[i][j];
     // }
+    
+    // // TC -> O(Polynomial)
+    // // SC -> O(N * M)
+    // int tabulation(string s, string t){
+    //     vector<vector<int>> dp (s.size() + 1, vector<int>(t.size() + 1, 0));
+    //     for(int i = 0; i <= s.size(); i++){
+    //         dp[i][0] = i;
+    //     }
+    //     for(int j = 0; j <= t.size(); j++){
+    //         dp[0][j] = j;
+    //     }
+    //     for(int i = 1; i<= s.size(); i++){
+    //         for(int j = 1; j <= t.size(); j++){
+    //             if(s[i - 1] == t[j- 1]){
+    //                 dp[i][j] = dp[i - 1][j - 1];
+    //             }else{
+    //                 int del = dp[i - 1][j];
+    //                 int insert = dp[i][j - 1];
+    //                 int replace = dp[i - 1][j - 1];
+    //                 dp[i][j] = 1 + min(del, min(insert, replace));
+    //             }
+    //         }
+    //     }
+    //     return dp[s.size()][t.size()];
+    // }
 
-    int tabulation(string s, string t){
-        vector<vector<int>> dp (s.size() + 1, vector<int>(t.size() + 1, 0));
-        for(int i = 0; i <= s.size(); i++){
-            dp[i][0] = i;
-        }
+    int optimizedTabulation(string s, string t){
+        vector<int> prev(t.size() + 1, -1);
+        vector<int> curr(t.size() + 1, -1);
         for(int j = 0; j <= t.size(); j++){
-            dp[0][j] = j;
+            curr[j] = j;
         }
+        prev = curr;
         for(int i = 1; i<= s.size(); i++){
+            curr[0] = i;
             for(int j = 1; j <= t.size(); j++){
                 if(s[i - 1] == t[j- 1]){
-                    dp[i][j] = dp[i - 1][j - 1];
+                    curr[j] = prev[j - 1];
                 }else{
-                    int del = dp[i - 1][j];
-                    int insert = dp[i][j - 1];
-                    int replace = dp[i - 1][j - 1];
-                    dp[i][j] = 1 + min(del, min(insert, replace));
+                    int del = prev[j];
+                    int insert = curr[j - 1];
+                    int replace = prev[j - 1];
+                    curr[j] = 1 + min(del, min(insert, replace));
                 }
             }
+            prev = curr;
         }
-        return dp[s.size()][t.size()];
+        return prev[t.size()];
     }
 
     int minDistance(string word1, string word2) {
-        return tabulation(word1, word2);
+        return optimizedTabulation(word1, word2);
     }
 };
