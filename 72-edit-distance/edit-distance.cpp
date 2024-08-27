@@ -16,26 +16,50 @@ public:
         }
     }
 
-    int memoized(string s, string t, int i, int j,vector<vector<int>>& dp){
-        if(i < 0) return j + 1;
-        if(j < 0) return i + 1;
-        if (dp[i][j] != -1){
-            return dp[i][j];
-        }
-        if(s[i] == t[j]){
-            return memoized(s, t, i - 1, j - 1, dp);
-        }else{
-            int del = memoized(s , t, i - 1, j, dp);
-            int insert = memoized(s, t, i, j - 1, dp);
-            int replace = memoized(s , t, i - 1, j - 1, dp);
+    //O(Polynomial)
+    //O(N + M + N * M)
+    // int memoized(string s, string t, int i, int j,vector<vector<int>>& dp){
+    //     if(i < 0) return j + 1;
+    //     if(j < 0) return i + 1;
+    //     if (dp[i][j] != -1){
+    //         return dp[i][j];
+    //     }
+    //     if(s[i] == t[j]){
+    //         return memoized(s, t, i - 1, j - 1, dp);
+    //     }else{
+    //         int del = memoized(s , t, i - 1, j, dp);
+    //         int insert = memoized(s, t, i, j - 1, dp);
+    //         int replace = memoized(s , t, i - 1, j - 1, dp);
 
-            dp[i][j] = 1 + min(del, min(insert, replace));
+    //         dp[i][j] = 1 + min(del, min(insert, replace));
+    //     }
+    //     return dp[i][j];
+    // }
+
+    int tabulation(string s, string t){
+        vector<vector<int>> dp (s.size() + 1, vector<int>(t.size() + 1, 0));
+        for(int i = 0; i <= s.size(); i++){
+            dp[i][0] = i;
         }
-        return dp[i][j];
+        for(int j = 0; j <= t.size(); j++){
+            dp[0][j] = j;
+        }
+        for(int i = 1; i<= s.size(); i++){
+            for(int j = 1; j <= t.size(); j++){
+                if(s[i - 1] == t[j- 1]){
+                    dp[i][j] = dp[i - 1][j - 1];
+                }else{
+                    int del = dp[i - 1][j];
+                    int insert = dp[i][j - 1];
+                    int replace = dp[i - 1][j - 1];
+                    dp[i][j] = 1 + min(del, min(insert, replace));
+                }
+            }
+        }
+        return dp[s.size()][t.size()];
     }
 
     int minDistance(string word1, string word2) {
-        vector<vector<int>> dp (word1.size(), vector<int>(word2.size(), -1));
-        return memoized(word1, word2, word1.size() - 1, word2.size() - 1, dp);
+        return tabulation(word1, word2);
     }
 };
