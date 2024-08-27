@@ -86,7 +86,6 @@ public:
         }
         return prev[t.size()];
     }
-
     int minDistance(string word1, string word2) {
         return optimizedTabulation(word1, word2);
     }
