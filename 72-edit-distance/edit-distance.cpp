@@ -61,6 +61,8 @@ public:
     //     return dp[s.size()][t.size()];
     // }
 
+    // TC -> (Polynomial)
+    // SC -> O(M)
     int optimizedTabulation(string s, string t){
         vector<int> prev(t.size() + 1, -1);
         vector<int> curr(t.size() + 1, -1);
