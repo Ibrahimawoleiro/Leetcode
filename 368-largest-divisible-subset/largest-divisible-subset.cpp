@@ -46,9 +46,6 @@ public:
         vector<int> ans;
         int max_index = -1;
         int size = -1;
-        for(auto val: subset_size_tracker){
-            cout << val << " "<< endl;
-        }
         for(int index = 0; index < nums.size(); index++){
             if(subset_size_tracker[index] > size){
                 size = subset_size_tracker[index];
