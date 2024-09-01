@@ -1,5 +1,32 @@
 class Solution {
 public:
+    bool bfs(vector<vector<int>>& graph,vector<int>& visited,vector<int>& color, int parent, int paint, int vertex){
+        //{{vertex, parent}, paint}
+        queue<pair<pair<int, int>, int>> q;
+        q.push({{vertex, -1}, 1});
+        visited[vertex] = 1;
+        color[vertex] = paint;
+        while(!q.empty()){
+            int vertex = q.front().first.first;
+            int parent = q.front().first.second;
+            int paint = q.front().second;
+            q.pop();
+            for(int neighbor: graph[vertex]){
+                if (neighbor == parent){
+                    continue;
+                }
+                if (visited[neighbor] == 0){
+                    q.push({{neighbor, vertex}, paint == 1? 2: 1});
+                    visited[neighbor] = 1;
+                    color[neighbor] = paint == 1? 2: 1;
+                }else if(color[neighbor] == paint){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     bool dfs(vector<vector<int>>& graph,vector<int>& visited,vector<int>& color, int parent, int paint, int vertex){
         visited[vertex] = 1;
         color[vertex] = paint;
