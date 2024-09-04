@@ -71,7 +71,6 @@ class Solution:
         for num in store:
             if num == u_f.find_ultimate_parent(num):
                 count += 1
-        print(store)
         return len(stones) - count
 
 
