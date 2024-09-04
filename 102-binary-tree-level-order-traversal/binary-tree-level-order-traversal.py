@@ -4,27 +4,28 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from queue import Queue
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
             return []
-        main_queue = deque()
-        main_array = []
-        children_queue = deque()
-        inner_array = []
-        main_queue.append(root)
-        while(main_queue):
-            curr =  main_queue.popleft()
-            if curr.left:
-                children_queue.append(curr.left)
-            if curr.right:
-                children_queue.append(curr.right)
-            inner_array.append(curr.val)
-            if len(main_queue) == 0:
-               main_queue = children_queue
-               children_queue = deque()
-               main_array.append(inner_array)
-               inner_array = []
-
-        return main_array
-        
+        q = Queue()
+        q.put(root)
+        q.put(None)
+        ans = []
+        level = []
+        while(not q.empty()):
+            curr = q.get()
+            if curr:
+                level.append(curr.val)
+                if curr.left:
+                    q.put(curr.left)
+                if curr.right:
+                    q.put(curr.right)
+            else:
+                print(q.qsize())
+                ans.append(level)
+                level = []
+                if not q.empty():
+                    q.put(None)
+        return ans
