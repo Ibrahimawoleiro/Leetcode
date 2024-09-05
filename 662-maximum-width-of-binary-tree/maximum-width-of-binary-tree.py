@@ -24,7 +24,6 @@ class Solution:
                 if first == -1:
                     first =  p
                 last = p
-            print(first, last)
             if node.left:
                 q.put((node.left, row + 1, p * 2))
             if node.right:
