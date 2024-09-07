@@ -1,23 +1,18 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        
-        def min_finder(s, e):
+
+           #Identify the minimum side and return the minimum
+           #Identify the unsorted side and call the recursive case on it
+        def rec(s, e):
             if s > e:
-                return nums[s]
+                return 10000
             if s == e:
                 return nums[s]
-            
             mid = (s + e) // 2
-            #Greater than both ends
-            if mid == s:
-                return min(nums[mid], min_finder(mid+1 , e))
-            if nums[mid] > nums[s] and nums[mid] > nums[e]:
-                return min(nums[mid],min_finder(mid + 1, e))
-            #Less than both ends
-            elif nums[mid] < nums[s] and nums[mid] < nums[e]:
-                return min(nums[mid], min_finder(s , mid-1))
-            #Less than one end
+            if nums[mid] > nums[s]:
+                return min(nums[s], rec(mid + 1, e))
+            elif nums[mid] < nums[e]:
+                return min(nums[mid], rec(s, mid - 1))
             else:
-                return min_finder(s , mid - 1)
-
-        return min_finder(0 , len(nums) - 1)
+                return min(rec(s, mid), rec(mid+ 1, e))
+        return rec(0, len(nums) - 1)
