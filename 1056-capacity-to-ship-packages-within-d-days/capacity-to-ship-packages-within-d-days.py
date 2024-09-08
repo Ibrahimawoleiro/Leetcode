@@ -3,7 +3,6 @@ class Solution:
         low = max(weights)
         high = sum(weights)
         ans = 0
-
         while low <= high:
             capacity = (low + high) // 2
             days_taken = 0
@@ -18,7 +17,6 @@ class Solution:
                     total = weights[index]
                     if index == len(weights) - 1:
                         days_taken += 1
-
             if days_taken <= days:
                 ans = capacity
                 high = capacity - 1
