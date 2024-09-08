@@ -17,7 +17,6 @@ class Solution:
                 if flower_count == k:
                     i = i + k
                     bouquet_count += 1
-                
             if bouquet_count >= m:
                 ans = mid
                 high = mid - 1
