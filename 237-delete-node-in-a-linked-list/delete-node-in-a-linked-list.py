@@ -10,8 +10,10 @@ class Solution:
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        while node.next.next:
+        def rec(node):
+            if not node.next:
+                return None
             node.val = node.next.val
-            node = node.next
-        node.val = node.next.val
-        node.next = None
+            node.next = rec(node.next)
+            return node
+        rec(node)
