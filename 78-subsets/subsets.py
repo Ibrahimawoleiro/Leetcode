@@ -1,16 +1,11 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        ans = [[]]
+        ans = []
+        for val in range((1 << len(nums) )):
+            list = []
+            for index in range(len(nums)):
+                if val & (1 << index) > 0:
+                    list.append(nums[index])
+            ans.append(list[::-1])
 
-        def helper(curr, i):
-            if i >= len(nums):
-                return 
-            for index in range(i, len(nums)):
-                curr.append(nums[index])
-                ans.append(curr.copy())
-                helper(curr, index + 1)
-                curr.pop()
-        helper([], 0)
         return ans
-
-            
