@@ -36,7 +36,4 @@ class Solution:
         for index in range(len(height)):
             water_at_curr = min(max_left[index], max_right[index]) - height[index]
             total += water_at_curr
-        print(max_left)
-        print(height)
-        print(max_right)
         return total
