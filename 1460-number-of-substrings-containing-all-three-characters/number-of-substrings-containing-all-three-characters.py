@@ -8,7 +8,6 @@ class Solution:
         for index in range(len(s)):
             store[s[index]] = index
             if store['a'] >= 0 and store['b'] >= 0 and store['c'] >= 0:
-                print(store)
                 min_start = min(store['a'], store['b'], store['c'])
                 ans += min_start + 1
 
