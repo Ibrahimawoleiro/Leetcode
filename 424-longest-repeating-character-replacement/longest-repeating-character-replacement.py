@@ -33,7 +33,6 @@ class Solution:
             max_freq = max(max_freq, tracker[ord(s[right]) - ord('A')])
             subarr_length = right - left + 1
             while subarr_length - max_freq > k:
-                print('kkkk')
                 tracker[ord(s[left]) - ord('A')] -= 1
                 left += 1
                 subarr_length = right - left + 1
