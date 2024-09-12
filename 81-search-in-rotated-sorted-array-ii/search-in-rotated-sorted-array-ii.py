@@ -1,36 +1,41 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
-        def bs(s , e):
-            left = s
-            right = e
-            ans = False
+        n = len(nums)
+        def binary_search(start, end):
+            left = start
+            right = end
             while left <= right:
                 mid = (left + right) // 2
                 if nums[mid] == target:
                     return True
-                elif nums[mid] > target:
-                    right = mid - 1
-                else:
+                elif nums[mid] < target:
                     left = mid + 1
-            return ans
-        def rec(s, e):
-            if s >= e:
-                if s == e:
-                    if nums[s] == target:
-                        return True
                 else:
-                    return False
-            mid = (s + e) // 2
-            if nums[mid] == target:
+                    right = mid - 1
+            return False
+
+        def find(start, end):
+            if start >= end:
+                if nums[start] == target:
+                    return True
+                return False
+            middle = (start + end) // 2
+            if nums[middle] == target:
                 return True
-            if nums[mid] > nums[s] and target >= nums[s] and target < nums[mid]:
-                return bs(s,mid - 1)
-            elif nums[mid] < nums[e] and target > nums[mid] and target <= nums[e]:
-                return bs(mid+ 1, e)
+            if nums[middle] < nums[end] and nums[start] > nums[middle]:
+                result = binary_search(middle, end)
+                if result:
+                    return True
+                return find(start, middle - 1)
+            elif nums[middle] > nums[start] and nums[middle] > nums[end]:
+                result = binary_search(start, middle - 1)
+                if  result:
+                    return True
+                return find(middle + 1, end)
             else:
-                left = rec(s, mid - 1)
-                right = rec(mid + 1, e)
-                if left != False:
-                    return left
-                return right
-        return rec(0,len(nums) - 1)
+                result_l = find(start, middle - 1)
+                if result_l:
+                    return result_l
+                result_r = find(middle + 1, end)
+                return result_r
+        return find(0, n - 1)
