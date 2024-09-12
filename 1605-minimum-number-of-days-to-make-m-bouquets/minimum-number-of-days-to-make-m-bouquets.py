@@ -37,9 +37,8 @@ class Solution:
                 if bouquet >= m:
                     ans = mid
                     high = mid - 1
-                elif bouquet < m:
-                    low = mid + 1
                 else:
-                    high =  mid - 1 
+                    low = mid + 1
+
             return ans
         return optimized()
