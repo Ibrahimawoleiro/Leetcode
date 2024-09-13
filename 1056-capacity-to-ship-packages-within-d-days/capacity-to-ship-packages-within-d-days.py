@@ -4,22 +4,18 @@ class Solution:
         high = sum(weights)
         ans = 0
         while low <= high:
-            capacity = (low + high) // 2
-            days_taken = 0
-            total = 0
-            for index in range(len(weights)):
-                if total + weights[index] <= capacity:
-                    total += weights[index]
-                    if index == len(weights) - 1:
-                        days_taken += 1
+            mid = (low + high) // 2
+            days_taken = 1
+            curr_sum = 0
+            for weight in weights:
+                if curr_sum + weight <= mid:
+                    curr_sum += weight
                 else:
                     days_taken += 1
-                    total = weights[index]
-                    if index == len(weights) - 1:
-                        days_taken += 1
+                    curr_sum = weight
             if days_taken <= days:
-                ans = capacity
-                high = capacity - 1
+                ans = mid
+                high = mid - 1
             else:
-                low = capacity + 1
+                low = mid + 1
         return ans
