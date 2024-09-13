@@ -3,7 +3,6 @@ class Solution:
         row = 0 
         col = len(matrix[0]) - 1
         while col >= 0 and row < len(matrix):
-            print(col, row)
             if matrix[row][col] == target:
                 return True
             if matrix[row][col] < target:
