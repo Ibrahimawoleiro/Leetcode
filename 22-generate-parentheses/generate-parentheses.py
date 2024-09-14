@@ -1,29 +1,16 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        ans = []
-        def helper(curr,o, c ):
-            if len(curr) == 2*n:
-                ans.append(curr[:])
+        def recursive(combo, op, cl, ans):
+            if op == n and cl == n:
+                ans.append(combo)
                 return 
-            if o > c:
-                #Two options: Add ( or add )
-                if o < n:
-                    curr += '('
-                    helper(curr, o + 1, c)
-                    curr = curr[:-1]
-                curr += ')'
-                helper(curr, o, c + 1)
-            else:
-                if o < n:
-                    curr += '('
-                    helper(curr, o + 1, c)
-                    curr = curr[:-1]
-                else:
-                    curr += ')'
-                    helper(curr, o, c + 1)
-
-        helper('', 0, 0)
+            #If the number of open brackets in less than n, then we can add an open bracker
+            if op < n:
+                recursive(combo + '(', op + 1, cl, ans)
+            #If the number of open brackets is greater than the number of closing bracket, 
+            #then you can add a closing bracket
+            if op > cl:
+                recursive(combo + ')', op, cl + 1, ans)
+        ans = []
+        recursive('', 0,0,ans)
         return ans
-
-
-
