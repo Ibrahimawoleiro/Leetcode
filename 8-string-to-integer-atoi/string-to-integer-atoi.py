@@ -32,7 +32,6 @@ class Solution:
         return self.rounding(inputs, store, result, index)
     def rounding(self, inputs, store, result, index):
         curr  = int(result)
-        print(curr)
         if curr < -2 ** 31:
             return -2 ** 31
         if curr > (2 ** 31)- 1:
