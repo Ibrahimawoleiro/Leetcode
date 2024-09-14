@@ -20,6 +20,4 @@ class Solution:
                 bottom = False
             if top and bottom:
                 return [mid, max_col]
-
         return [-1, -1]
-
