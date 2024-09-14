@@ -1,18 +1,16 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
         ans = []
-        def helper(i,curr, s):
-            if s >= target:
-                if s == target:
-                    ans.append(curr.copy())
+        def rec(arr, rem, combo, i,ans):
+            if i >= len(arr) or  rem == 0:
+                if rem == 0:
+                    ans.append(combo.copy())
                 return 
-            
-            for index in range(i , len(candidates)):
-                current = s + candidates[index]
-                curr.append(candidates[index])
-                helper(index, curr, current)
-                curr.pop()
-                current -= candidates[index]
-
-        helper(0,[],0)
+            if rem >= arr[i]:
+                combo.append(arr[i])
+                rec(arr, rem - arr[i], combo, i, ans)
+                combo.pop()
+            rec(arr, rem, combo, i + 1, ans)
+        rec(candidates, target, [], 0, ans)
         return ans
