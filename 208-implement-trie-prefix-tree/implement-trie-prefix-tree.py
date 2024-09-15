@@ -1,7 +1,7 @@
 class Box:
     def __init__(self):
-        self.alphabets = [None for num in range(26)]
-        self.e = False
+        self.array = [None for _ in range(26)]
+        self.flag = False
 
 class Trie:
 
@@ -9,39 +9,56 @@ class Trie:
         self.box = Box()
 
     def insert(self, word: str) -> None:
-        curr = self.box
-        for l in word:
-            index = ord(l) - ord('a')
-            if not curr.alphabets[index]:
-                curr.alphabets[index] = Box()
-                curr = curr.alphabets[index]
+        current = self.box
+        i = 0
+        while i < len(word):
+            letter = word[i]
+            #Position to place the new Box
+            pos = ord(letter) - ord('a')
+            #If there's already a box present
+            if current.array[pos]:
+                current = current.array[pos]
+            #If there isn't a box present
             else:
-                curr = curr.alphabets[index]
-
-        curr.e = True
-
+                new_box = Box()
+                current.array[pos] = new_box
+                current = current.array[pos]
+            i += 1
+        current.flag = True
 
     def search(self, word: str) -> bool:
-        curr = self.box
-        for l in word:
-            index = ord(l) - ord('a')
-            if not curr.alphabets[index]:
-                return False
+        current = self.box
+        i = 0
+        while i < len(word):
+            letter = word[i]
+            #Position to place the new Box
+            pos = ord(letter) - ord('a')
+            #If there's already a box present
+            if current.array[pos]:
+                current = current.array[pos]
+            #If there isn't a box present
             else:
-                curr = curr.alphabets[index]
-
-        return curr.e
+                return False
+            i += 1
+        return current.flag
 
     def startsWith(self, prefix: str) -> bool:
-        curr = self.box
-        for l in prefix:
-            index = ord(l) - ord('a')
-            if not curr.alphabets[index]:
-                return False
+        word = prefix
+        current = self.box
+        i = 0
+        while i < len(word):
+            letter = word[i]
+            #Position to place the new Box
+            pos = ord(letter) - ord('a')
+            #If there's already a box present
+            if current.array[pos]:
+                current = current.array[pos]
+            #If there isn't a box present
             else:
-                curr = curr.alphabets[index]
-
+                return False
+            i += 1
         return True
+
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
