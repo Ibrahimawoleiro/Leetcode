@@ -10,19 +10,14 @@ class Solution:
             '8': 'tuv',
             '9': 'wxyz'
         }
-
-        #Make a recursive function to loop through every value at index for diff combination
         ans = []
-        def recursive(index,curr):
-            if index >= len(digits):
-                if len(curr) > 0:
-                    ans.append(curr)
-                return 
-            for val in dictionary[digits[index]]:
-                #Add one of the val matched to digits[i] to curr
-                curr = curr + val
-                recursive(index + 1, curr)
-                curr = curr[:-1]
-
-        recursive(0, '')
+        def rec(store, index, combo):
+            if index == len(digits):
+                if len(combo) > 0:
+                    ans.append(combo)
+                return
+            #Recursive Case
+            for val in store[digits[index]]:
+                rec(store, index + 1, combo + val)
+        rec(dictionary, 0, '')
         return ans
