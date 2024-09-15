@@ -11,7 +11,15 @@ class Solution:
             return dp[n]
         dp[n] = self.memoized(n - 1, dp) + self.memoized(n - 2, dp)
         return dp[n]
+    
+    def tabulation(self,n):
+        dp = [-1 for _ in range(n + 1)]
+        for i in range(n + 1):
+            if i == 0 or i == 1:
+                dp[i] = 1
+            else:
+                dp[i] = dp[i - 1] + dp[i - 2]
+        return dp[n]
 
     def climbStairs(self, n: int) -> int:
-        dp = [-1 for _ in range(n + 1)]
-        return self.memoized(n, dp)
+        return self.tabulation(n)
