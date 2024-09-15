@@ -1,35 +1,21 @@
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
-        #Every partition is a beginning 
-        #And every partition should move from size 1 to the end of the array
-        #Every partition should not move to the next size unless the current size is a palindrome
+    def partition(self, word: str) -> List[List[str]]:
+        def palindrome(left, right):
+            while left <= right:
+                if word[left] != word[right]:
+                    return False
+                left += 1
+                right -= 1
+            return True
         ans = []
-        def helper(b,curr):
-            if b>= len(s):
-                ans.append(curr.copy())
+        def rec(s, e,combo):
+            if s >= len(word):
+                ans.append(combo.copy())
                 return
-            #Check subarrays starting from beginning to end of arr
-            #End of current partition and beginning of next partition
-            for index in range(b+1, len(s) + 1):
-                #Create a subword
-                
-                #Put a pointer at the beginning of subword and end of subword
-                i = b
-                j = index - 1
-                palindrome = False
-                #Check if the word is a palindrome
-                while i <= j:
-                    if s[i] != s[j]:
-                        break
-                    i+=1
-                    j-=1
-                    if i > j:
-                        palindrome = True
-                #If it is a palindrome, append it to current
-                #Then check different combination for the right side
-                if palindrome:
-                    curr.append(s[b:index])
-                    helper(index, curr)
-                    curr.pop()
-        helper(0,[])
+            for end in range(e, len(word)):
+                if palindrome(s,end):
+                    combo.append(word[s:end + 1])
+                    rec(end + 1, end + 1,combo)
+                    combo.pop()
+        rec(0,0,[])
         return ans
