@@ -1,23 +1,21 @@
 class Solution:
+    def recursive(self,r, c, m, n):
+        if r < 0 or c < 0 or r >= m or c >= n:
+            return 0
+        if r == 0 and c == 0:
+            return 1
+        else:
+            return self.recursive(r - 1, c, m , n) + self.recursive(r, c - 1, m, n)
+    def memoized(self,r, c, m, n, dp):
+        if r < 0 or c < 0 or r >= m or c >= n:
+            return 0
+        if r == 0 and c == 0:
+            return 1
+        if dp[r][c] != -1:
+            return dp[r][c]
+        else:
+            dp[r][c] = self.memoized(r - 1, c, m , n, dp) + self.memoized(r, c - 1, m, n, dp)
+        return dp[r][c]
     def uniquePaths(self, m: int, n: int) -> int:
-        #c -> Coordiante (row, col)
-        store = {}
-        def helper(c,store):
-            if c[0] >= m or c[1] >= n:
-                return 0
-            if c in store:
-                return store[c]
-            
-            down = helper((c[0]+ 1, c[1]), store)
-            right = helper((c[0], c[1] + 1), store)
-
-            curr = down + right
-            if c[0] == m - 1 and c[1] == n - 1:
-                 curr += 1
-            
-            store[c] = curr
-
-            return curr
-        
-        ans = helper((0,0), store)
-        return ans
+        dp = [[-1 for _ in range(n)] for _ in range(m)]
+        return self.memoized(m - 1, n - 1, m, n, dp)
