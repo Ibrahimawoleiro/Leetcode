@@ -23,10 +23,25 @@ class Solution:
         result = triangle[r][c] + min(left_diagonal, right_diagonal)
         dp[r][c] = result
         return result
+
+    def tabulation(self, triangle):
+        dp = [[-1 for _ in range(len(triangle[index]))] for index in range(len(triangle))]
+        for r in range(len(triangle)):
+            for c in range(len(triangle[r])):
+                if r == 0 and c == 0:
+                    dp[r][c] = triangle[r][c]
+                else:
+                    left_diagonal = float('inf')
+                    right_diagonal = float('inf')
+                    if c - 1 >= 0:
+                        left_diagonal = dp[r - 1][c - 1]
+                    if c <= r - 1:
+                        right_diagonal = dp[r - 1][c]
+                    dp[r][c] = triangle[r][c] + min(left_diagonal, right_diagonal)
+        ans = float('inf')
+        for val in dp[-1]:
+            ans = min(ans, val)
+        return ans
         
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        min_path = float('inf')
-        dp = [[-1 for _ in range(len(triangle[index]))] for index in range(len(triangle))]
-        for c in range(len(triangle[-1])):
-            min_path = min(min_path, self.memoization(triangle, len(triangle) - 1, c, dp))
-        return min_path
+        return self.tabulation(triangle)
