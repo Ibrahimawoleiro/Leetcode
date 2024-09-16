@@ -1,22 +1,22 @@
 class Solution:
-    # def recursive(self,r, c, m, n):
-    #     if r < 0 or c < 0:
-    #         return 0
-    #     if r == 0 and c == 0:
-    #         return 1
-    #     else:
-    #         return self.recursive(r - 1, c, m , n) + self.recursive(r, c - 1, m, n)
+    def recursive(self,r, c, m, n):
+        if r < 0 or c < 0:
+            return 0
+        if r == 0 and c == 0:
+            return 1
+        else:
+            return self.recursive(r - 1, c, m , n) + self.recursive(r, c - 1, m, n)
 
-    # def memoized(self,r, c, m, n, dp):
-    #     if r < 0 or c < 0:
-    #         return 0
-    #     if r == 0 and c == 0:
-    #         return 1
-    #     if dp[r][c] != -1:
-    #         return dp[r][c]
-    #     else:
-    #         dp[r][c] = self.memoized(r - 1, c, m , n, dp) + self.memoized(r, c - 1, m, n, dp)
-    #     return dp[r][c]
+    def memoized(self,r, c, m, n, dp):
+        if r < 0 or c < 0:
+            return 0
+        if r == 0 and c == 0:
+            return 1
+        if dp[r][c] != -1:
+            return dp[r][c]
+        else:
+            dp[r][c] = self.memoized(r - 1, c, m , n, dp) + self.memoized(r, c - 1, m, n, dp)
+        return dp[r][c]
     
     def tabulation(self,m,n):
         dp = [[-1 for _ in range(n)] for _ in range(m)]
@@ -35,7 +35,23 @@ class Solution:
         return dp[m - 1][n - 1]
     
     def optimized_tabulation(self, m,n):
-        pass
+        prev = [0 for _ in range(n)] 
+        curr = [0 for _ in range(n)] 
+        for row in range(m):
+            for col in range(n):
+                if row == 0 and col == 0:
+                    curr[col] = 1
+                else:
+                    up = 0
+                    left = 0
+                    if row - 1 >= 0:
+                        up = prev[col]
+                    if col - 1 >= 0:
+                        left = curr[col - 1]
+                    curr[col] = up + left
+            prev = curr
+            curr = [0 for _ in range(n)] 
+        return prev[n - 1]
 
     def uniquePaths(self, m: int, n: int) -> int:
-        return self.tabulation(m, n)
+        return self.optimized_tabulation(m, n)
