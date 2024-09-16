@@ -49,6 +49,8 @@ class Solution:
         for val in dp[-1]:
             ans = min(ans , val)
         return ans
+        
+    
 
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
         return self.tabulation(matrix)
