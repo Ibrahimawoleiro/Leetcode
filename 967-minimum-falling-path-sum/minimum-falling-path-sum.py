@@ -30,7 +30,7 @@ class Solution:
         return result
     
     def tabulation(self, matrix):
-        dp = [[-1 for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
+        dp = [[0 for _ in range(len(matrix[0]))] for _ in range(len(matrix))]
         for r in range(len(matrix)):
             for c in range(len(matrix[0])):
                 if r == 0:
@@ -51,8 +51,8 @@ class Solution:
         return ans
     
     def optimized_tabulation(self, matrix):
-        prev = [-1 for _ in range(len(matrix[0]))] 
-        curr = [-1 for _ in range(len(matrix[0]))] 
+        prev = [0 for _ in range(len(matrix[0]))] 
+        curr = [0 for _ in range(len(matrix[0]))] 
         for r in range(len(matrix)):
             for c in range(len(matrix[0])):
                 if r == 0:
