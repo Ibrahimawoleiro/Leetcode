@@ -49,8 +49,30 @@ class Solution:
         for val in dp[-1]:
             ans = min(ans , val)
         return ans
-        
     
+    def optimized_tabulation(self, matrix):
+        prev = [-1 for _ in range(len(matrix[0]))] 
+        curr = [-1 for _ in range(len(matrix[0]))] 
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if r == 0:
+                    curr[c] = matrix[r][c]
+                else:
+                    left = float('inf')
+                    middle = float('inf')
+                    right = float('inf')
+                    if c - 1 >= 0:
+                        left = matrix[r][c] + prev[c - 1]
+                    middle = matrix[r][c] + prev[c]
+                    if c + 1 < len(matrix[0]):
+                        right = matrix[r][c] + prev[c + 1]
+                    curr[c] = min(left, middle, right)
+            prev = curr
+            curr = [-1 for _ in range(len(matrix[0]))] 
+        ans = float('inf')
+        for val in prev:
+            ans = min(ans , val)
+        return ans
 
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
-        return self.tabulation(matrix)
+        return self.optimized_tabulation(matrix)
