@@ -42,6 +42,28 @@ class Solution:
         for val in dp[-1]:
             ans = min(ans, val)
         return ans
+
+        def optimized_tabulation(self, triangle):
+            prev = [-1 for _ in range(len(triangle[0]))]
+            curr = [-1 for _ in range(len(triangle[0]))]
+            for r in range(len(triangle)):
+                for c in range(len(triangle[r])):
+                    if r == 0 and c == 0:
+                        curr[c] = triangle[r][c]
+                    else:
+                        left_diagonal = float('inf')
+                        right_diagonal = float('inf')
+                        if c - 1 >= 0:
+                            left_diagonal = prev[c - 1]
+                        if c <= r - 1:
+                            right_diagonal = prev[c]
+                        dp[r][c] = triangle[r][c] + min(left_diagonal, right_diagonal)
+                prev = curr
+                curr = [-1 for _ in range(len(triangle[r + 1]))]
+            ans = float('inf')
+            for val in prev:
+                ans = min(ans, val)
+            return ans
         
     def minimumTotal(self, triangle: List[List[int]]) -> int:
         return self.tabulation(triangle)
