@@ -1,23 +1,23 @@
 class Solution:
-    def minPathSum(self, grid: List[List[int]]) -> int:
-        td = len(grid)
-        lr = len(grid[0])
-        store = {}
-        def helper(c, store):
-            if c[0] >= td or c[1] >= lr:
-                return float('inf')
-            if c in store:
-                return store[c]
-            right = helper((c[0], c[1] + 1), store)
-            down  = helper((c[0] + 1, c[1]), store)
-            curr = 0
-            if c[0] == td - 1 and c[1] == lr - 1:
-                curr = grid[c[0]][c[1]]
-            else:
-                curr = grid[c[0]][c[1]] + min(right, down)
-            store[c] = curr
+    def recursive(self,grid, r , c):
+        if r < 0 or c < 0:
+            return float('inf')
+        if r == 0 and c == 0:
+            return grid[0][0]
+        #Recursive
+        return grid[r][c] + min(self.recursive(grid, r - 1,c), self.recursive(grid, r, c - 1))
+    
+    def memoized(self,grid, r , c, dp):
+        if r < 0 or c < 0:
+            return float('inf')
+        if r == 0 and c == 0:
+            return grid[0][0]
+        if dp[r][c] != -1:
+            return dp[r][c]
+        #Recursive
+        dp[r][c] = grid[r][c] + min(self.memoized(grid, r - 1,c,dp), self.memoized(grid, r, c - 1,dp))
+        return dp[r][c]
 
-            return curr
-        
-        ans =  helper((0,0), store)
-        return ans 
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        dp = [[-1 for _ in range(len(grid[0]))] for _ in range(len(grid))]
+        return self.memoized(grid, len(grid) - 1, len(grid[0]) - 1, dp)
