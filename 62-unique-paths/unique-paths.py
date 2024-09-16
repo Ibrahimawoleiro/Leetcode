@@ -33,6 +33,9 @@ class Solution:
                         left = dp[row][col - 1]
                     dp[row][col] = up + left
         return dp[m - 1][n - 1]
-
+    
+    def optimized_tabulation(self, m,n):
+        pass
+        
     def uniquePaths(self, m: int, n: int) -> int:
         return self.tabulation(m, n)
