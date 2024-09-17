@@ -11,7 +11,7 @@ class Solution:
                 checker[fruits[r]] += 1
             else:
                 checker[fruits[r]] = 1
-            while len(checker) > allowed:
+            while len(checker) > allowed and (r - l + 1) > ans:
                 checker[fruits[l]] -= 1
                 if checker[fruits[l]] == 0:
                     del checker[fruits[l]]
