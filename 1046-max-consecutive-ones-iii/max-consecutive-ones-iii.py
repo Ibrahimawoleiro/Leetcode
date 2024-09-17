@@ -2,9 +2,10 @@ class Solution:
     def optimized(self, nums, k):
         l = 0
         r = 0
+        n = len(nums)
         ans = 0
         zero = 0
-        while r < len(nums):
+        while r < n:
             if nums[r] == 0:
                 zero += 1
             while zero > k:
