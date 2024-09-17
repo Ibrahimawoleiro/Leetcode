@@ -8,7 +8,7 @@ class Solution:
         while r < n:
             if nums[r] == 0:
                 zero += 1
-            while zero > k:
+            while zero > k and (r - l + 1) > ans:
                 if nums[l] == 0:
                     zero -= 1
                 l += 1
