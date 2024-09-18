@@ -9,7 +9,6 @@ class Solution:
         while r < len(nums):
             total += nums[r]
             while total > goal:
-                print(total, l)
                 total -= nums[l]
                 l += 1
             ans += r - l + 1
