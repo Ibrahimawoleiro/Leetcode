@@ -8,4 +8,4 @@ class Solution:
             ans += num % 10
             num = num // 10
         ans = ans * -1 if negative else ans
-        return ans if ans <= (2 ** 31) - 1 and ans >= (-2 ** 31) else 0
+        return ans if ans <= (2 ** 31) - 1 and ans >= -(2 ** 31) else 0
