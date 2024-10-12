@@ -1,41 +1,33 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        n = len(nums)
-        def binary_search(start, end):
-            left = start
-            right = end
-            while left <= right:
-                mid = (left + right) // 2
+        n = len(nums) - 1
+        def bs(l, r):
+            while l <= r:
+                mid = (l + r) // 2
                 if nums[mid] == target:
                     return mid
-                elif nums[mid] < target:
-                    left = mid + 1
+                if nums[mid] > target:
+                    r = mid - 1
                 else:
-                    right = mid - 1
+                    l = mid + 1
             return -1
-
-        def find(start, end):
-            if start >= end:
-                if nums[start] == target:
-                    return start
+        def rec(l , r):
+            if l >= r:
+                if nums[l] == target:
+                    return l
                 return -1
-            middle = (start + end) // 2
-            if nums[middle] == target:
-                return middle
-            if nums[middle] < nums[end] and nums[start] > nums[middle]:
-                result = binary_search(middle, end)
-                if result > -1:
-                    return result
-                return find(start, middle - 1)
-            elif nums[middle] > nums[start] and nums[middle] > nums[end]:
-                result = binary_search(start, middle - 1)
-                if  result > -1:
-                    return result
-                return find(middle + 1, end)
+            mid = (l + r) // 2
+            if nums[mid] == target:
+                return mid
+            if nums[mid] > nums[l]:
+                bs_search = bs(l, mid - 1)
+                if bs_search != -1:
+                    return bs_search
+                return rec(mid + 1, r)
             else:
-                result_l = find(start, middle - 1)
-                if result_l > -1:
-                    return result_l
-                result_r = find(middle + 1, end)
-                return result_r
-        return find(0, n - 1)
+                bs_search = bs(mid + 1 , r)
+                if bs_search != -1:
+                    return bs_search
+                return rec(l , mid - 1)
+
+        return rec(0, n)
