@@ -3,17 +3,29 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        
-        def reverse(start, end):
-            if end <= 0:
-                return
-            while start < end:
-                nums[start], nums[end] = nums[end], nums[start]
-                start += 1
-                end -= 1
 
-        
-        reverse(0, len(nums)  - 1)
+        if k % len(nums) == 0:
+            return
 
-        reverse(0, (k) % len(nums) - 1)
-        reverse(k % len(nums), len(nums) - 1)
+        rotation = k % len(nums)
+
+        temp = []
+
+        arr_length = len(nums)
+
+        for i in range(arr_length - 1, arr_length - rotation - 1, - 1):
+
+            temp.append(nums[i])
+        
+        for i in range(arr_length - rotation - 1, -1, -1):
+
+            nums[i + rotation] = nums[i]
+        
+        j = 0
+
+        for i in range(len(temp) - 1, - 1, -1):
+            print(i)
+            nums[j] = temp[i]
+            j += 1 
+
+
