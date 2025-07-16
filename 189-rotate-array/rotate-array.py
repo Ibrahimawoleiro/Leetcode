@@ -24,7 +24,6 @@ class Solution:
         j = 0
 
         for i in range(len(temp) - 1, - 1, -1):
-            print(i)
             nums[j] = temp[i]
             j += 1 
 
