@@ -3,13 +3,25 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        fast = 0
-        slow = 0
-        while(fast < len(nums)):
-            if nums[fast] != 0:
-                temp = nums[fast]
-                nums[fast] = nums[slow]
-                nums[slow] = temp
-                slow+=1
-            fast += 1
         
+        i = j = 0
+
+        while i < len(nums):
+
+            while i < len(nums) and nums[i] == 0:
+
+                i += 1
+
+            if i == len(nums):
+                break
+            
+            while j < i and nums[j] != 0:
+                j += 1
+            
+            if nums[j] == 0:
+
+                nums[i], nums[j] = nums[j] , nums[i]
+            
+            else:
+                i += 1
+
