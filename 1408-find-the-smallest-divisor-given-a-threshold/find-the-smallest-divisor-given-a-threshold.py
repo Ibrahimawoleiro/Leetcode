@@ -4,7 +4,7 @@ class Solution:
         left = 1
         right = max(nums)
 
-        ans = max(nums)
+        ans = min(nums)
 
         while left <= right:
 
