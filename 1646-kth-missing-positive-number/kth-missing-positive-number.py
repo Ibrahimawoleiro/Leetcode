@@ -26,7 +26,5 @@ class Solution:
 
         missing = k - (arr[floor_index] - (floor_index + 1)) 
 
-        print(missing, k, floor_index,  arr[floor_index])
-
         return arr[floor_index] + missing
 
