@@ -1,19 +1,32 @@
 class Solution:
     def findKthPositive(self, arr: List[int], k: int) -> int:
-        checker = k
-        current = 1
-        kth_missing = -1
-        runner = 0
-        while(checker > 0 and runner < len(arr)):
-            if arr[runner] != current:
-                kth_missing = current
-                current += 1
-                checker -= 1
+
+        if k < arr[0]:
+            return k
+         
+        left_boundary = 0
+
+        right_boundary = len(arr) - 1
+
+        floor_index = len(arr) - 1
+
+        while left_boundary <= right_boundary:
+
+            current = (left_boundary + right_boundary) //  2
+
+            if arr[current] - (current + 1) < k:
+
+                floor_index = current
+
+                left_boundary = current + 1 
+
             else:
-                current += 1
-                runner += 1
-        
-        if checker > 0:
-            return arr[-1] + checker
-            
-        return kth_missing
+
+                right_boundary = current - 1
+
+        missing = k - (arr[floor_index] - (floor_index + 1)) 
+
+        print(missing, k, floor_index,  arr[floor_index])
+
+        return arr[floor_index] + missing
+
