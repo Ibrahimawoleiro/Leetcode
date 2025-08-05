@@ -1,29 +1,50 @@
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
-        #code here
-        n = len(nums)
-        m = k
-        arr = nums
-        if (m > n):
+        if k > len(nums):
+                
             return -1
-        mini_allocation = max(arr)
-        max_allocation = sum(arr)
-        ans = float('inf')
-        while mini_allocation<= max_allocation:
-            allocation = (mini_allocation + max_allocation) // 2
-            curr_allocation = 0
-            student_count = 1
-            max_student_allocation = 0
-            for page_count in arr:
-                if page_count + curr_allocation <= allocation:
-                    curr_allocation += page_count
+                
+        lowest_allocation = max(nums)
+        
+        highest_allocation = sum(nums)
+        
+        best_answer = float('inf')
+        
+        while lowest_allocation <= highest_allocation:
+            
+            curr_sum = 0
+                
+            current_allocation = (lowest_allocation + highest_allocation) // 2
+                
+            students = 1
+                
+            for val in nums:
+                
+                if curr_sum + val <= current_allocation:
+                            
+                        curr_sum += val
+                
                 else:
-                    curr_allocation = page_count
-                    student_count += 1
-                max_student_allocation = max(curr_allocation, max_student_allocation)
-            if student_count <= m:
-                ans = min(max_student_allocation, ans)
-                max_allocation = allocation - 1
+                    
+                    curr_sum = val
+                    
+                    students += 1
+                    
+            # print(lowest_allocation, students)
+            
+            if students <= k:
+                    
+                best_answer = min(best_answer,current_allocation)
+                    
+                highest_allocation = current_allocation - 1
+                    
+                    
+            elif students < k:
+                
+                highest_allocation = current_allocation - 1
+                
             else:
-                mini_allocation = allocation + 1
-        return ans if ans < 10 ** 10 else -1
+                
+                lowest_allocation = current_allocation + 1
+                
+        return best_answer if best_answer != float('inf') else -1
