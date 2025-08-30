@@ -15,9 +15,6 @@ class Solution:
 
             col = mid % row_length
 
-            print(start, end)
-
-
             if matrix[row][col] == target:
 
                 return True
