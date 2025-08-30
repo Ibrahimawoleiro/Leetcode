@@ -1,40 +1,34 @@
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        
 
-        def findRow(top, bottom):
+        col_length = len(matrix)
+        row_length = len(matrix[0])
 
-            while top <= bottom:
-                mid = (top + bottom) // 2
-                if mid + 1 == len(matrix):
-                    return len(matrix) - 1
-                else:
-                    if target < matrix[mid + 1][0] and target >= matrix[mid][0]:
-                        return mid
-                    else:
-                        if target < matrix[mid][0]:
-                            bottom = mid - 1
-                        else:
-                            top = mid + 1
+        start = 0
+        end = col_length * row_length - 1
 
-            return -1
+        while start <= end:
 
-        index = findRow(0, len(matrix) - 1)
+            mid = (start + end) // 2
 
-        left = 0
+            row = mid // row_length
 
-        right = len(matrix[0]) - 1
+            col = mid % row_length
 
-        while left <= right:
+            print(start, end)
 
-            mid = (left + right) // 2
 
-            if matrix[index][mid] ==  target:
+            if matrix[row][col] == target:
+
                 return True
-            
-            if matrix[index][mid] < target:
-                left = mid + 1
+
+            elif matrix[row][col] > target:
+
+                end = mid - 1
+
             else:
-                right = mid - 1
+
+                start = mid + 1
 
         return False
+
